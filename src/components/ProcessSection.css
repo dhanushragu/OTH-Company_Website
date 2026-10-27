@@ -1,0 +1,430 @@
+/* ==========================================================================
+   5-STEP PROCESS SECTION - PORTRAIT IMAGES, BLACK & GOLD LUXURY THEME
+   Palette: Obsidian (#04060c), Warm Gold (#fbbf24 / #f59e0b), Milk White (#f8fafc)
+   ========================================================================== */
+
+.process-section {
+  position: relative;
+  background-color: #04060c;
+  padding: 100px 1.5rem 120px;
+  overflow: hidden;
+  color: #f8fafc;
+}
+
+/* Background Ambient Lighting */
+.process-ambient-glow {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, rgba(56, 189, 248, 0.04) 50%, transparent 70%);
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.process-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.process-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.process-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 15px rgba(245, 158, 11, 0.15);
+}
+
+.eyebrow-sparkle {
+  color: #fde047;
+}
+
+.process-main-title {
+  font-size: clamp(2.2rem, 3.8vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: #ffffff;
+}
+
+.title-gold-gradient {
+  background: linear-gradient(135deg, #fffbeb 0%, #fde047 30%, #fbbf24 60%, #f59e0b 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.animated-gradient-text {
+  animation: shine-text 5s linear infinite;
+}
+
+@keyframes shine-text {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ==========================================================================
+   KINETIC TYPOGRAPHY COMPONENTS
+   ========================================================================== */
+.animated-words-wrapper {
+  display: inline;
+}
+
+.word-clip {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.word-inline {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.tracking-animated {
+  letter-spacing: 0.12em;
+  transition: letter-spacing 0.3s ease;
+}
+
+.step-tag-pill:hover .tracking-animated {
+  letter-spacing: 0.16em;
+}
+
+.link-hover-reveal {
+  position: relative;
+  display: inline-block;
+}
+
+.link-hover-reveal::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 1.5px;
+  background: currentColor;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.step-learn-link:hover .link-hover-reveal::after {
+  width: 100%;
+}
+
+.process-subheading {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* ==========================================================================
+   PROCESS ROWS (Step by Step) & DYNAMIC CONNECTING LINE
+   ========================================================================== */
+.process-steps-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5.5rem;
+}
+
+/* Fullscreen Responsive SVG Canvas for the Gold Connecting Track */
+.process-connector-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0; /* Strictly behind all images and content */
+  overflow: visible;
+}
+
+.connector-path-guide {
+  transition: opacity 0.3s ease;
+}
+
+.badge-glow-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 18px;
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  pointer-events: none;
+  animation: badge-pulse 3s infinite ease-in-out;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.process-step-row {
+  position: relative;
+  z-index: 1; /* Elevates entire row above SVG line */
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+.process-step-row.row-reverse {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.process-step-row.row-reverse .step-image-column {
+  order: 2;
+}
+
+.process-step-row.row-reverse .step-content-column {
+  order: 1;
+}
+
+/* ==========================================================================
+   PORTRAIT IMAGE CARD
+   ========================================================================== */
+.step-image-column {
+  position: relative;
+  z-index: 2; /* Ensures images are strictly in front of the gold line */
+  display: flex;
+  justify-content: center;
+}
+
+.portrait-image-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 4 / 5;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #090e1c;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.9),
+    0 0 0 1px rgba(245, 158, 11, 0.2);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+}
+
+.portrait-image-wrapper:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 
+    0 35px 65px -15px rgba(0, 0, 0, 0.95),
+    0 0 28px rgba(245, 158, 11, 0.3),
+    0 0 0 1px rgba(245, 158, 11, 0.5);
+}
+
+.portrait-step-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.portrait-image-wrapper:hover .portrait-step-image {
+  transform: scale(1.04);
+}
+
+.portrait-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 6, 12, 0) 0%,
+    rgba(4, 6, 12, 0.05) 70%,
+    rgba(4, 6, 12, 0.25) 100%
+  );
+  pointer-events: none;
+}
+
+.image-gold-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Floating Step Number Badge */
+.step-floating-badge {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(6, 9, 18, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+.step-num-text {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   CONTENT COLUMN
+   ========================================================================== */
+.step-content-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.step-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+  border: 1px solid;
+  background: rgba(255, 255, 255, 0.03);
+  width: fit-content;
+}
+
+.step-title {
+  font-size: clamp(1.65rem, 2.5vw, 2.15rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.step-order-number {
+  color: #fbbf24;
+  margin-right: 0.25rem;
+}
+
+.step-description {
+  font-size: 1.02rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  margin: 0;
+  max-width: 540px;
+}
+
+/* Checklist items */
+.step-checklist {
+  list-style: none;
+  margin: 0.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: #e2e8f0;
+}
+
+.check-icon {
+  flex-shrink: 0;
+}
+
+/* Link with micro-interaction */
+.step-action-row {
+  margin-top: 0.5rem;
+}
+
+.step-learn-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #fbbf24;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: gap 0.25s ease, color 0.2s ease;
+}
+
+.step-learn-link:hover {
+  color: #fde047;
+  gap: 0.75rem;
+}
+
+.arrow-hover {
+  transition: transform 0.25s ease;
+}
+
+.step-learn-link:hover .arrow-hover {
+  transform: translateX(3px);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 960px) {
+  .process-step-row,
+  .process-step-row.row-reverse {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .process-step-row.row-reverse .step-image-column,
+  .process-step-row.row-reverse .step-content-column {
+    order: unset;
+  }
+
+  .portrait-image-wrapper {
+    max-width: 320px;
+  }
+
+  .process-steps-list {
+    gap: 4rem;
+  }
+}

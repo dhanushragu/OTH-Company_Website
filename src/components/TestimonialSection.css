@@ -1,0 +1,437 @@
+/* ==========================================================================
+   TESTIMONIAL SECTION - LUXURY BLACK & RADIANT GOLD AESTHETIC
+   Palette: Rich Obsidian (#04060c), Warm Gold (#fbbf24 / #f59e0b), Pure White (#f8fafc)
+   ========================================================================== */
+
+.testimonials-section {
+  position: relative;
+  background-color: #04060c;
+  padding: 120px 2rem 140px;
+  overflow: hidden;
+  color: #f8fafc;
+}
+
+/* ==========================================================================
+   AMBIENT GLOWS & BACKGROUND GRID
+   ========================================================================== */
+.testimonial-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(140px);
+}
+
+.glow-top {
+  top: 10%;
+  left: 20%;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
+}
+
+.glow-bottom {
+  bottom: 10%;
+  right: 15%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.06) 0%, rgba(56, 189, 248, 0.03) 50%, transparent 70%);
+}
+
+.testimonial-grid-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 70px 70px;
+  opacity: 0.6;
+}
+
+.testimonials-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   SECTION HEADER
+   ========================================================================== */
+.testimonials-header {
+  text-align: center;
+  max-width: 840px;
+  margin: 0 auto 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.testimonial-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.12);
+}
+
+.eyebrow-gold-sparkle {
+  color: #fde047;
+}
+
+.testimonials-main-title {
+  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: #ffffff;
+}
+
+.quote-text-primary {
+  color: #ffffff;
+}
+
+.quote-gold-gradient {
+  background: linear-gradient(135deg, #fffbeb 0%, #fde047 30%, #fbbf24 65%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.3));
+}
+
+.testimonials-subheading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  max-width: 660px;
+  margin: 0;
+}
+
+/* Metric Strip */
+.testimonial-metrics-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  padding: 0.85rem 2rem;
+  background: rgba(6, 9, 18, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.metric-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.metric-number {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #fbbf24;
+  letter-spacing: -0.01em;
+}
+
+.metric-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.metric-divider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* ==========================================================================
+   CARDS GRID (3 COLUMNS)
+   ========================================================================== */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   INDIVIDUAL TESTIMONIAL CARD
+   ========================================================================== */
+.testimonial-card {
+  position: relative;
+  background: rgba(8, 12, 24, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  padding: 2.2rem 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 
+    0 20px 45px -10px rgba(0, 0, 0, 0.8),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: 
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.35s ease;
+}
+
+.testimonial-card:hover {
+  border-color: rgba(251, 191, 36, 0.45);
+  background: rgba(10, 15, 30, 0.85);
+  box-shadow: 
+    0 25px 65px -10px rgba(0, 0, 0, 0.95),
+    0 0 30px rgba(251, 191, 36, 0.15),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+
+/* Top Gold Accent Line */
+.card-gold-accent-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #fbbf24 40%, #f59e0b 70%, transparent);
+  opacity: 0.6;
+  transition: opacity 0.35s ease;
+}
+
+.testimonial-card:hover .card-gold-accent-line {
+  opacity: 1;
+}
+
+/* Giant Watermark Quote Icon */
+.card-watermark-quote {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  color: rgba(251, 191, 36, 0.04);
+  pointer-events: none;
+  transition: color 0.35s ease, transform 0.35s ease;
+}
+
+.testimonial-card:hover .card-watermark-quote {
+  color: rgba(251, 191, 36, 0.08);
+  transform: translateY(-4px) scale(1.05);
+}
+
+/* Card Header: Tag & Stars */
+.card-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.card-tag-badge {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+}
+
+.card-stars-row {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.star-icon-gold {
+  color: #fbbf24;
+}
+
+/* Card Quote Content */
+.card-quote-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  margin-bottom: 2rem;
+}
+
+.card-quote-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #cbd5e1;
+  margin: 0;
+  font-style: normal;
+  letter-spacing: -0.005em;
+}
+
+/* ==========================================================================
+   CARD FOOTER: CLIENT AVATAR PORTRAIT & DETAILS
+   ========================================================================== */
+.card-client-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Elegantly sized portrait avatar (52px diameter) */
+.client-avatar-wrapper {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 2px solid rgba(251, 191, 36, 0.45);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 12px rgba(251, 191, 36, 0.15);
+  background-color: #0c1222;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+}
+
+.testimonial-card:hover .client-avatar-wrapper {
+  transform: scale(1.05);
+  border-color: #fbbf24;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 18px rgba(251, 191, 36, 0.35);
+}
+
+.client-avatar-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Fallback monogram in case an image fails to load */
+.client-avatar-fallback {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.25) 0%, rgba(245, 158, 11, 0.08) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #fde047;
+}
+
+.hidden-fallback {
+  display: none;
+}
+
+.avatar-ring-glow {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  pointer-events: none;
+}
+
+.client-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.client-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 750;
+  color: #ffffff;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.client-role {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fbbf24;
+  margin: 0;
+}
+
+.client-company {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.company-icon {
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+/* Corner Subtle Glow */
+.card-corner-glow {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.testimonial-card:hover .card-corner-glow {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: 90px 1.25rem 100px;
+  }
+
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .testimonial-metrics-strip {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    border-radius: 18px;
+  }
+
+  .metric-divider {
+    display: none;
+  }
+}

@@ -1,0 +1,290 @@
+/* ==========================================================================
+   OUR CLIENTS SECTION - CONTINUOUS TRAIN MARQUEE
+   Refined Contrast Slate/Navy Backdrop for Maximum Logo Clarity
+   Palette: Luminous Deep Slate (#0c1222 -> #12192d), Radiant Gold (#fbbf24)
+   ========================================================================== */
+
+.clients-section {
+  position: relative;
+  /* Slightly lighter, rich slate-navy gradient for crystal-clear logo visibility */
+  background: radial-gradient(circle at 50% 50%, #151d34 0%, #0d1424 55%, #080d19 100%);
+  padding: 105px 0 115px;
+  overflow: hidden;
+  color: #f8fafc;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Background Ambient Lighting */
+.clients-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 900px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.09) 0%, rgba(245, 158, 11, 0.05) 45%, transparent 70%);
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.clients-grid-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  opacity: 0.6;
+}
+
+.clients-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.clients-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.clients-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  padding: 0.35rem 1rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.15);
+}
+
+.eyebrow-sparkle {
+  color: #fde047;
+}
+
+.clients-title {
+  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+  font-weight: 850;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.title-gold-gradient {
+  background: linear-gradient(135deg, #fffbeb 0%, #fde047 30%, #fbbf24 65%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.35));
+}
+
+.clients-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  max-width: 620px;
+  margin: 0;
+}
+
+/* ==========================================================================
+   MARQUEE TRAIN TRACKS
+   ========================================================================== */
+.marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 1.4rem 0;
+}
+
+.marquee-wrapper-offset {
+  margin-top: 1.25rem;
+}
+
+/* Edge gradient masks matching the slate-navy section backdrop */
+.marquee-fade-left,
+.marquee-fade-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.marquee-fade-left {
+  left: 0;
+  background: linear-gradient(90deg, #090e1b 0%, rgba(13, 20, 36, 0.85) 50%, transparent 100%);
+}
+
+.marquee-fade-right {
+  right: 0;
+  background: linear-gradient(270deg, #090e1b 0%, rgba(13, 20, 36, 0.85) 50%, transparent 100%);
+}
+
+/* Moving Tracks (Continuous looping train) */
+.marquee-track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 3.5rem;
+  will-change: transform;
+}
+
+/* Row 1: Right to Left (33.333% translation for 3 duplicated batches) */
+.marquee-scroll-left {
+  animation: trainScrollLeft 36s linear infinite;
+}
+
+.marquee-scroll-left:hover {
+  animation-play-state: paused;
+}
+
+/* Row 2: Left to Right */
+.marquee-scroll-right {
+  animation: trainScrollRight 36s linear infinite;
+}
+
+.marquee-scroll-right:hover {
+  animation-play-state: paused;
+}
+
+@keyframes trainScrollLeft {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-33.333333%, 0, 0);
+  }
+}
+
+@keyframes trainScrollRight {
+  0% {
+    transform: translate3d(-33.333333%, 0, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* ==========================================================================
+   PURE LOGO ITEM - NO BACKGROUND CARDS, ORIGINAL COLOR & SHAPE
+   ========================================================================== */
+.client-logo-item {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.client-logo-item:hover {
+  transform: translateY(-4px) scale(1.08);
+}
+
+/* Image styling - original color & shape + luminous drop-shadow for dark text logos */
+.client-logo-img {
+  max-width: 190px;
+  max-height: 65px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: 
+    drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7))
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.22)) !important;
+  opacity: 1 !important;
+  border-radius: 4px;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.client-logo-item:hover .client-logo-img {
+  filter: 
+    drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 0 22px rgba(251, 191, 36, 0.4)) !important;
+}
+
+/* ==========================================================================
+   TRUST FOOTER
+   ========================================================================== */
+.clients-trust-footer {
+  margin-top: 3.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 0 1.5rem;
+}
+
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #94a3b8;
+  background: rgba(13, 20, 36, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.4rem 1.2rem;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+}
+
+.trust-icon {
+  color: #fbbf24;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 768px) {
+  .clients-section {
+    padding: 75px 0 85px;
+  }
+
+  .client-logo-img {
+    max-width: 140px;
+    max-height: 48px;
+  }
+
+  .marquee-track {
+    gap: 2.2rem;
+  }
+
+  .marquee-fade-left,
+  .marquee-fade-right {
+    width: 60px;
+  }
+
+  .marquee-wrapper-offset {
+    margin-top: 0.75rem;
+  }
+}
+

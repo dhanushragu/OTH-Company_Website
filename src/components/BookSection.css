@@ -1,0 +1,752 @@
+/* ==========================================================================
+   CEO BOOK SECTION - EXECUTIVE SHOWCASE & RECTANGULAR BIOGRAPHY
+   Palette: Rich Obsidian (#04060c), Warm Gold (#fbbf24 / #f59e0b / #d97706),
+            Soft Ivory (#f8fafc), Slate Gray (#94a3b8)
+   ========================================================================== */
+
+.book-section {
+  position: relative;
+  background-color: #04060c;
+  padding: 120px 2rem 130px;
+  overflow: hidden;
+  color: #f8fafc;
+  border-top: 1px solid rgba(251, 191, 36, 0.12);
+}
+
+/* Ambient Glows */
+.book-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(160px);
+}
+
+.glow-gold {
+  top: 10%;
+  left: 5%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
+}
+
+.glow-cyan {
+  bottom: 10%;
+  right: 5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.05) 0%, transparent 70%);
+}
+
+.glow-center {
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(217, 119, 6, 0.05) 0%, transparent 70%);
+}
+
+.book-grid-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  background-size: 72px 72px;
+  opacity: 0.55;
+}
+
+.book-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.book-header {
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.15rem;
+}
+
+.book-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  padding: 0.4rem 1.15rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.15);
+}
+
+.eyebrow-gold-sparkle {
+  color: #fde047;
+}
+
+.book-main-title {
+  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+  font-weight: 850;
+  line-height: 1.16;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.title-gold-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #fbbf24 60%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.35));
+}
+
+.book-author-lead {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.18rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.ceo-name-highlight {
+  color: #fbbf24;
+  font-weight: 750;
+}
+
+/* ==========================================================================
+   1. BALANCED TOP SHOWCASE ROW (SLIDESHOW LEFT, OVERVIEW RIGHT)
+   ========================================================================== */
+.book-showcase-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 2.5rem;
+}
+
+/* Slideshow Stage Card */
+.slideshow-stage-card {
+  position: relative;
+  background: linear-gradient(165deg, rgba(17, 24, 39, 0.85) 0%, rgba(8, 12, 22, 0.95) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  border-radius: 22px;
+  padding: 1.4rem;
+  box-shadow: 
+    0 25px 50px -15px rgba(0, 0, 0, 0.95),
+    0 0 35px rgba(251, 191, 36, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.slideshow-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.slideshow-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  padding: 0.3rem 0.85rem;
+  border-radius: 9999px;
+}
+
+.slide-badge-icon {
+  color: #fde047;
+}
+
+.slideshow-counter {
+  font-family: 'Syne', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.counter-divider {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.counter-total {
+  color: #64748b;
+}
+
+.slideshow-viewport {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 11;
+  border-radius: 16px;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #111827 0%, #030712 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.slide-content-frame {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.slide-img-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #020617;
+}
+
+.slide-img {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-img.cover-fit {
+  object-fit: contain;
+  padding: 1rem;
+  filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.9)) drop-shadow(0 0 25px rgba(251, 191, 36, 0.25));
+}
+
+.slide-img.summit-fit {
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.slide-content-frame:hover .slide-img {
+  transform: scale(1.03);
+}
+
+.slide-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 50%, rgba(4, 6, 12, 0.85) 100%);
+  pointer-events: none;
+}
+
+.slide-caption-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.9rem 1.15rem;
+  background: linear-gradient(to top, rgba(4, 6, 12, 0.95) 0%, rgba(4, 6, 12, 0.7) 70%, transparent 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  z-index: 2;
+  backdrop-filter: blur(6px);
+}
+
+.slide-tag-pill {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fbbf24;
+}
+
+.slide-caption-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #f1f5f9;
+  margin: 0;
+  font-weight: 500;
+}
+
+.slide-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(4, 6, 12, 0.8);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: #fbbf24;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.slide-nav-btn:hover {
+  background: #fbbf24;
+  color: #04060c;
+  border-color: #fde047;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.prev-btn { left: 12px; }
+.next-btn { right: 12px; }
+
+/* Bottom Bar: Dots & Mini Thumbnails */
+.slideshow-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.15rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.slideshow-dots-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.slide-dot {
+  position: relative;
+  width: 28px;
+  height: 5px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.slide-dot.active {
+  width: 44px;
+  background: rgba(251, 191, 36, 0.35);
+}
+
+.dot-progress-fill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  border-radius: 9999px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.slide-dot.active .dot-progress-fill {
+  opacity: 1;
+}
+
+.slideshow-thumbnails-mini {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.mini-thumb-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  padding: 0.25rem 0.6rem 0.25rem 0.3rem;
+  color: #94a3b8;
+  cursor: pointer;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.mini-thumb-btn img {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.mini-thumb-btn.active-thumb {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: #fbbf24;
+  color: #fbbf24;
+}
+
+/* Right Overview Card */
+.book-overview-card {
+  background: linear-gradient(165deg, rgba(15, 23, 42, 0.75) 0%, rgba(8, 12, 22, 0.95) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-radius: 22px;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.4rem;
+  box-shadow: 
+    0 25px 50px -15px rgba(0, 0, 0, 0.85),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.book-title-quote-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  padding: 0.35rem 0.9rem;
+  border-radius: 8px;
+}
+
+.quote-badge-icon {
+  color: #fde047;
+}
+
+.editorial-book-heading {
+  font-family: 'Cinzel', 'Syne', Georgia, serif;
+  font-size: clamp(1.4rem, 2.1vw, 1.85rem);
+  font-weight: 750;
+  line-height: 1.35;
+  margin: 0;
+  background: linear-gradient(145deg, #ffffff 40%, #e2e8f0 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.editorial-lead-para {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.76;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.editorial-lead-para strong {
+  color: #fbbf24;
+  font-weight: 650;
+}
+
+.event-impact-callout {
+  position: relative;
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.06) 0%, rgba(15, 23, 42, 0.6) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.25);
+  border-radius: 14px;
+  padding: 1.3rem 1.4rem 1.3rem 1.8rem;
+  overflow: hidden;
+}
+
+.callout-gold-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #f59e0b 0%, #fbbf24 60%, transparent 100%);
+}
+
+.callout-header {
+  margin-bottom: 0.45rem;
+}
+
+.callout-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fbbf24;
+}
+
+.callout-body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.68;
+  color: #e2e8f0;
+  margin: 0;
+}
+
+/* ==========================================================================
+   2. RECTANGULAR FULL-WIDTH EXECUTIVE CEO CARD (Solves Empty Left Space)
+   ========================================================================== */
+.ceo-bio-rectangular-card {
+  position: relative;
+  background: linear-gradient(170deg, rgba(17, 24, 39, 0.88) 0%, rgba(10, 15, 29, 0.96) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 24px;
+  padding: 2.8rem 3rem;
+  box-shadow: 
+    0 30px 70px -20px rgba(0, 0, 0, 0.95),
+    0 0 50px rgba(251, 191, 36, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.bio-rect-glow-accent {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Header Row: Identity on Left, Credentials on Right */
+.bio-rect-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.18);
+}
+
+.bio-rect-identity {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.ceo-avatar-badge {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-weight: 850;
+  font-size: 1.25rem;
+  color: #04060c;
+  box-shadow: 0 0 25px rgba(251, 191, 36, 0.4);
+  flex-shrink: 0;
+}
+
+.ceo-name-title {
+  font-family: 'Cinzel', 'Plus Jakarta Sans', serif;
+  font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+  font-weight: 750;
+  color: #ffffff;
+  margin: 0 0 0.35rem 0;
+}
+
+.ceo-experience-pill {
+  display: inline-block;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fbbf24;
+  letter-spacing: 0.06em;
+}
+
+/* Credentials Bar */
+.ceo-credentials-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.cred-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  padding: 0.6rem 0.95rem;
+  border-radius: 12px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 650;
+  color: #e2e8f0;
+  transition: border-color 0.25s ease;
+}
+
+.cred-chip:hover {
+  border-color: rgba(251, 191, 36, 0.5);
+}
+
+.cred-icon {
+  color: #fbbf24;
+  flex-shrink: 0;
+}
+
+/* Full Width Rectangular Bio Paragraphs */
+.bio-rect-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.02rem;
+  line-height: 1.82;
+  color: #cbd5e1;
+}
+
+.bio-rect-body p {
+  margin: 0;
+}
+
+.bio-rect-body strong {
+  color: #ffffff;
+  font-weight: 650;
+}
+
+.bio-closing-line {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+/* Rectangular Card Footer / Action Row */
+.bio-rect-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.buy-now-glow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
+  color: #04060c !important;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 1rem 2.5rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  box-shadow: 
+    0 10px 30px rgba(245, 158, 11, 0.4),
+    0 0 25px rgba(251, 191, 36, 0.3);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #fef08a;
+  cursor: pointer;
+}
+
+.buy-now-glow-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 
+    0 16px 45px rgba(245, 158, 11, 0.6),
+    0 0 35px rgba(251, 191, 36, 0.55);
+  background: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #f59e0b 100%);
+  color: #000000 !important;
+}
+
+.btn-cart-icon {
+  stroke-width: 2.2;
+}
+
+.btn-arrow-icon {
+  stroke-width: 2.4;
+  transition: transform 0.25s ease;
+}
+
+.buy-now-glow-btn:hover .btn-arrow-icon {
+  transform: translate(3px, -3px);
+}
+
+.cta-assurance-note {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fbbf24;
+  opacity: 0.95;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .book-showcase-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .bio-rect-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ceo-credentials-bar {
+    width: 100%;
+  }
+
+  .ceo-bio-rectangular-card {
+    padding: 2rem 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .book-section {
+    padding: 85px 1.25rem 95px;
+  }
+
+  .book-main-title {
+    font-size: 2.1rem;
+  }
+
+  .ceo-credentials-bar {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .bio-rect-footer {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .buy-now-glow-btn {
+    justify-content: center;
+  }
+}

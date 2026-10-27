@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OHT - High Quality Video Frame Extractor</title>
+  <style>
+    :root {
+      --bg: #04060c;
+      --card-bg: rgba(13, 19, 36, 0.7);
+      --gold: #fbbf24;
+      --gold-glow: rgba(251, 191, 36, 0.25);
+      --cyan: #38bdf8;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --border: rgba(251, 191, 36, 0.25);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: rgba(251, 191, 36, 0.1);
+      border: 1px solid var(--border);
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fff, #fbbf24);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 0.5rem;
+    }
+
+    p.subtitle {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
+      margin-bottom: 2rem;
+    }
+
+    .controls-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    input, select {
+      background: rgba(6, 9, 18, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px;
+      color: #fff;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--gold);
+    }
+
+    .action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    button {
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 700;
+      padding: 0.85rem 1.8rem;
+      border-radius: 12px;
+      border: none;
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #fde047, #fbbf24, #f59e0b);
+      color: #04060c;
+      box-shadow: 0 4px 20px var(--gold-glow);
+    }
+
+    .btn-gold:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(251, 191, 36, 0.4);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary:hover:not(:disabled) {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .progress-bar-wrapper {
+      width: 100%;
+      height: 10px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      overflow: hidden;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #38bdf8, #fbbf24);
+      transition: width 0.1s linear;
+    }
+
+    .status-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .preview-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .preview-box {
+      width: 100%;
+      max-width: 480px;
+      aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .video-info-tag {
+      font-size: 0.8rem;
+      color: var(--cyan);
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <span class="badge">✦ VIDEO TOOLKIT</span>
+      <h1>Video Frame Extractor</h1>
+      <p class="subtitle">Extract 1 to 200 high-quality image frames from <code>herosection.mp4</code></p>
+    </div>
+
+    <div class="card">
+      <div class="controls-grid">
+        <div class="control-group">
+          <label>Video Source</label>
+          <input type="text" id="videoSource" value="/videos/herosection.mp4" />
+        </div>
+
+        <div class="control-group">
+          <label>Target Frame Count</label>
+          <input type="number" id="frameCount" value="200" min="10" max="600" />
+        </div>
+
+        <div class="control-group">
+          <label>Image Format</label>
+          <select id="imageFormat">
+            <option value="image/png" selected>PNG (Lossless High Quality)</option>
+            <option value="image/webp">WebP (Optimized High Quality)</option>
+            <option value="image/jpeg">JPEG</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="action-row">
+        <button id="btnSaveToFolder" class="btn-gold">
+          📁 Select Folder & Save All Frames
+        </button>
+        <button id="btnTestRun" class="btn-secondary">
+          ▶ Test Extraction (Preview Only)
+        </button>
+      </div>
+
+      <div class="progress-bar-wrapper">
+        <div id="progressFill" class="progress-fill"></div>
+      </div>
+      <div id="statusLabel" class="status-text">Ready. Click "Select Folder & Save All Frames" to begin.</div>
+
+      <div class="preview-section">
+        <div style="display:flex; justify-content:space-between; width:100%; max-width:480px; align-items:center;">
+          <span style="font-size:0.85rem; font-weight:700; color:var(--muted)">LIVE FRAME PREVIEW</span>
+          <span id="videoInfoBadge" class="video-info-tag">Inspecting video...</span>
+        </div>
+        <div class="preview-box">
+          <img id="framePreview" alt="Frame Preview" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='60'%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%23666'%3ENo Frame%3C/text%3E%3C/svg%3E" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden processing elements -->
+  <video id="hiddenVideo" muted playsinline style="display:none"></video>
+  <canvas id="hiddenCanvas" style="display:none"></canvas>
+
+  <script type="module">
+    import { extractFramesFromVideo } from '/scripts/extractFrames.js';
+
+    const videoEl = document.getElementById('hiddenVideo');
+    const canvasEl = document.getElementById('hiddenCanvas');
+    const previewImg = document.getElementById('framePreview');
+    const statusLabel = document.getElementById('statusLabel');
+    const progressFill = document.getElementById('progressFill');
+    const videoInfoBadge = document.getElementById('videoInfoBadge');
+
+    const btnSaveToFolder = document.getElementById('btnSaveToFolder');
+    const btnTestRun = document.getElementById('btnTestRun');
+
+    // Preload video info
+    async function loadVideoInfo() {
+      const src = document.getElementById('videoSource').value;
+      videoEl.src = src;
+      await new Promise(r => { videoEl.onloadedmetadata = r; videoEl.load(); });
+      videoInfoBadge.innerText = `${videoEl.videoWidth}x${videoEl.videoHeight} • ${videoEl.duration.toFixed(2)}s`;
+    }
+    loadVideoInfo().catch(console.error);
+
+    // Save frames directly to disk using the File System Access API
+    btnSaveToFolder.addEventListener('click', async () => {
+      try {
+        const totalFrames = parseInt(document.getElementById('frameCount').value, 10) || 200;
+        const format = document.getElementById('imageFormat').value;
+        const src = document.getElementById('videoSource').value;
+
+        // Prompt user to pick a folder on their machine (e.g. public/images/herosection-frames)
+        statusLabel.innerText = "Please select the destination folder on your computer...";
+        const dirHandle = await window.showDirectoryPicker({
+          mode: 'readwrite',
+          startIn: 'downloads'
+        });
+
+        btnSaveToFolder.disabled = true;
+        btnTestRun.disabled = true;
+
+        statusLabel.innerText = `Starting extraction of ${totalFrames} frames...`;
+
+        await extractFramesFromVideo(src, {
+          totalFrames,
+          format,
+          quality: 1.0,
+          onProgress: async ({ current, total, percent, filename, blob, dataUrl }) => {
+            progressFill.style.width = `${percent}%`;
+            statusLabel.innerText = `Writing [${current}/${total}] - ${filename} to chosen folder...`;
+            previewImg.src = dataUrl;
+
+            // Write frame file directly into selected directory
+            const fileHandle = await dirHandle.getFileHandle(filename, { create: true });
+            const writable = await fileHandle.createWritable();
+            await writable.write(blob);
+            await writable.close();
+          }
+        });
+
+        statusLabel.innerHTML = `✅ <strong>Success!</strong> All ${totalFrames} frames saved directly to your folder.`;
+      } catch (err) {
+        if (err.name === 'AbortError') {
+          statusLabel.innerText = "Folder selection was cancelled.";
+        } else {
+          statusLabel.innerText = `Error: ${err.message}`;
+          console.error(err);
+        }
+      } finally {
+        btnSaveToFolder.disabled = false;
+        btnTestRun.disabled = false;
+      }
+    });
+
+    // Test run preview only
+    btnTestRun.addEventListener('click', async () => {
+      try {
+        const totalFrames = parseInt(document.getElementById('frameCount').value, 10) || 50;
+        const format = document.getElementById('imageFormat').value;
+        const src = document.getElementById('videoSource').value;
+
+        btnSaveToFolder.disabled = true;
+        btnTestRun.disabled = true;
+
+        await extractFramesFromVideo(src, {
+          totalFrames,
+          format,
+          quality: 1.0,
+          onProgress: ({ current, total, percent, filename, dataUrl }) => {
+            progressFill.style.width = `${percent}%`;
+            statusLabel.innerText = `Previewing frame ${current} / ${total} (${filename})...`;
+            previewImg.src = dataUrl;
+          }
+        });
+
+        statusLabel.innerText = `Preview complete (${totalFrames} frames processed).`;
+      } catch (err) {
+        statusLabel.innerText = `Error: ${err.message}`;
+      } finally {
+        btnSaveToFolder.disabled = false;
+        btnTestRun.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
+
