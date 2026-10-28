@@ -3,6 +3,7 @@ import './Navbar.css';
 
 const navItems = [
   { id: 'home', label: 'Home', href: '#home' },
+  { id: 'about', label: 'About', href: '#about' },
   { id: 'services', label: 'Services', href: '#services' },
   { id: 'consultation', label: 'Consultation', href: '#consultation' },
   { id: 'our-solutions', label: 'Our Solutions', href: '#our-solutions' },
@@ -27,6 +28,10 @@ export default function Navbar() {
   const handleNavClick = (id) => {
     setActiveItem(id);
     setMobileMenuOpen(false);
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (

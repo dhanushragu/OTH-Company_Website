@@ -1,58 +1,74 @@
 /* ==========================================================================
-   TESTIMONIAL SECTION - LUXURY BLACK & RADIANT GOLD AESTHETIC
-   Palette: Rich Obsidian (#04060c), Warm Gold (#fbbf24 / #f59e0b), Pure White (#f8fafc)
+   OFFICEHUB TECH - EDITORIAL TESTIMONIAL SUITE
+   Theme: Pure Luxury Obsidian Black & Warm Radiant Gold
+   - Background: Rich Obsidian Black #04060C / #060911
+   - Cards: Executive Black Lacquer with Warm Gold Ambient Lighting
+   - Primary Accent: Warm Radiant Gold (#fbbf24 / #f59e0b / #d97706)
+   - Secondary Accent: Champagne & Ivory Gold (#fef3c7 / #fffbeb)
+   - Primary Text: Milk Ivory #f8fafc
+   - Secondary Text: Warm Slate #94a3b8 / #cbd5e1
    ========================================================================== */
 
 .testimonials-section {
   position: relative;
-  background-color: #04060c;
-  padding: 120px 2rem 140px;
+  background-color: #04060C;
+  padding: 130px 2rem 150px;
   overflow: hidden;
   color: #f8fafc;
+  border-top: 1px solid rgba(251, 191, 36, 0.15);
 }
 
 /* ==========================================================================
-   AMBIENT GLOWS & BACKGROUND GRID
+   AMBIENT ATMOSPHERE & GOLD LIGHTING
    ========================================================================== */
-.testimonial-glow {
+.testimonial-ambient-glow {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
-  filter: blur(140px);
+  filter: blur(160px);
 }
 
-.glow-top {
-  top: 10%;
-  left: 20%;
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.08) 0%, transparent 70%);
-}
-
-.glow-bottom {
-  bottom: 10%;
-  right: 15%;
+.glow-emerald-top {
+  top: 5%;
+  left: 10%;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.06) 0%, rgba(56, 189, 248, 0.03) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.07) 0%, transparent 70%);
 }
 
-.testimonial-grid-pattern {
+.glow-gold-center {
+  top: 45%;
+  right: 5%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
+}
+
+.glow-emerald-bottom {
+  bottom: 5%;
+  left: 25%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(217, 119, 6, 0.05) 0%, transparent 70%);
+}
+
+.testimonial-subtle-mesh {
   position: absolute;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
-  background-size: 70px 70px;
+  background-image: 
+    linear-gradient(rgba(251, 191, 36, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 191, 36, 0.02) 1px, transparent 1px);
+  background-size: 68px 68px;
   opacity: 0.6;
 }
 
 .testimonials-container {
   position: relative;
   z-index: 1;
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
 }
 
@@ -61,7 +77,7 @@
    ========================================================================== */
 .testimonials-header {
   text-align: center;
-  max-width: 840px;
+  max-width: 860px;
   margin: 0 auto 5rem;
   display: flex;
   flex-direction: column;
@@ -72,18 +88,18 @@
 .testimonial-eyebrow-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.55rem;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.74rem;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: #fbbf24;
   background: rgba(251, 191, 36, 0.08);
-  border: 1px solid rgba(251, 191, 36, 0.3);
-  padding: 0.35rem 1rem;
+  border: 1px solid rgba(251, 191, 36, 0.32);
+  padding: 0.4rem 1.15rem;
   border-radius: 9999px;
-  box-shadow: 0 0 15px rgba(251, 191, 36, 0.12);
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.15);
 }
 
 .eyebrow-gold-sparkle {
@@ -91,10 +107,10 @@
 }
 
 .testimonials-main-title {
-  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', serif;
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
   font-weight: 850;
-  line-height: 1.15;
+  line-height: 1.18;
   letter-spacing: -0.025em;
   margin: 0;
   color: #ffffff;
@@ -105,20 +121,20 @@
 }
 
 .quote-gold-gradient {
-  background: linear-gradient(135deg, #fffbeb 0%, #fde047 30%, #fbbf24 65%, #f59e0b 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #fbbf24 60%, #f59e0b 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.3));
+  filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.35));
 }
 
 .testimonials-subheading {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 1.08rem;
-  line-height: 1.65;
-  color: #94a3b8;
-  max-width: 660px;
+  line-height: 1.68;
+  color: #cbd5e1;
+  max-width: 680px;
   margin: 0;
 }
 
@@ -127,122 +143,136 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 1.5rem;
-  padding: 0.85rem 2rem;
-  background: rgba(6, 9, 18, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  gap: 2.2rem;
+  margin-top: 1.4rem;
+  padding: 0.85rem 2.5rem;
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.75) 0%, rgba(8, 12, 22, 0.85) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.25);
   border-radius: 9999px;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 
+    0 10px 25px -10px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(251, 191, 36, 0.08);
 }
 
 .metric-item {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
 }
 
 .metric-number {
-  font-size: 1.05rem;
+  font-family: 'Syne', sans-serif;
+  font-size: 1.15rem;
   font-weight: 800;
   color: #fbbf24;
   letter-spacing: -0.01em;
 }
 
 .metric-label {
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
   color: #94a3b8;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
 }
 
 .metric-divider {
   width: 1px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(251, 191, 36, 0.22);
 }
 
 /* ==========================================================================
-   CARDS GRID (3 COLUMNS)
+   DESKTOP & TABLET 3-COLUMN EDITORIAL GRID
    ========================================================================== */
+.testimonials-grid-wrapper {
+  display: block;
+}
+
 .testimonials-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  align-items: stretch;
 }
 
 /* ==========================================================================
-   INDIVIDUAL TESTIMONIAL CARD
+   PREMIUM EDITORIAL TESTIMONIAL CARD (BLACK & GOLD RICH FINISH)
    ========================================================================== */
 .testimonial-card {
   position: relative;
-  background: rgba(8, 12, 24, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: linear-gradient(168deg, rgba(18, 23, 35, 0.9) 0%, rgba(10, 14, 24, 0.95) 60%, rgba(4, 6, 12, 0.98) 100%);
+  border: 1px solid rgba(251, 191, 36, 0.2);
   border-radius: 22px;
-  padding: 2.2rem 2rem 2rem;
+  padding: 2.3rem 2.1rem 2.2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   box-shadow: 
-    0 20px 45px -10px rgba(0, 0, 0, 0.8),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    0 20px 45px -15px rgba(0, 0, 0, 0.95),
+    0 0 25px -10px rgba(251, 191, 36, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
   overflow: hidden;
   transition: 
+    transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.35s ease,
-    box-shadow 0.35s ease,
-    background 0.35s ease;
+    box-shadow 0.35s ease;
 }
 
 .testimonial-card:hover {
-  border-color: rgba(251, 191, 36, 0.45);
-  background: rgba(10, 15, 30, 0.85);
+  transform: translateY(-6px);
+  border-color: rgba(251, 191, 36, 0.55);
   box-shadow: 
-    0 25px 65px -10px rgba(0, 0, 0, 0.95),
-    0 0 30px rgba(251, 191, 36, 0.15),
-    inset 0 1px 1px rgba(255, 255, 255, 0.2);
+    0 30px 65px -15px rgba(0, 0, 0, 0.98),
+    0 0 40px rgba(251, 191, 36, 0.22),
+    inset 0 1px 0 rgba(251, 191, 36, 0.35);
 }
 
-/* Top Gold Accent Line */
-.card-gold-accent-line {
+/* Radiant Gold Top Accent Line */
+.card-top-accent-line {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #fbbf24 40%, #f59e0b 70%, transparent);
-  opacity: 0.6;
-  transition: opacity 0.35s ease;
+  background: linear-gradient(90deg, transparent 5%, #fbbf24 35%, #f59e0b 65%, transparent 95%);
+  opacity: 0.55;
+  transition: opacity 0.35s ease, filter 0.35s ease;
 }
 
-.testimonial-card:hover .card-gold-accent-line {
+.testimonial-card:hover .card-top-accent-line {
   opacity: 1;
+  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
 }
 
-/* Giant Watermark Quote Icon */
+/* Elegant Watermark Quote Motif in Warm Gold */
 .card-watermark-quote {
   position: absolute;
-  top: 1.2rem;
-  right: 1.2rem;
-  color: rgba(251, 191, 36, 0.04);
+  top: 1.4rem;
+  right: 1.4rem;
+  color: rgba(251, 191, 36, 0.05);
   pointer-events: none;
   transition: color 0.35s ease, transform 0.35s ease;
+  line-height: 0;
 }
 
 .testimonial-card:hover .card-watermark-quote {
-  color: rgba(251, 191, 36, 0.08);
-  transform: translateY(-4px) scale(1.05);
+  color: rgba(251, 191, 36, 0.12);
+  transform: translateY(-3px) scale(1.05);
 }
 
-/* Card Header: Tag & Stars */
+/* Card Header: Category Micro-Label & Star Rating */
 .card-header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 1.5rem;
+  gap: 0.75rem;
+  margin-bottom: 1.45rem;
   position: relative;
   z-index: 1;
 }
@@ -251,57 +281,75 @@
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.68rem;
   font-weight: 750;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #fbbf24;
-  background: rgba(251, 191, 36, 0.08);
-  border: 1px solid rgba(251, 191, 36, 0.2);
-  padding: 0.25rem 0.65rem;
+  background: rgba(251, 191, 36, 0.1);
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  padding: 0.3rem 0.75rem;
   border-radius: 6px;
+  white-space: nowrap;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.testimonial-card:hover .card-tag-badge {
+  border-color: rgba(251, 191, 36, 0.5);
+  background: rgba(251, 191, 36, 0.16);
 }
 
 .card-stars-row {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.2rem;
+  gap: 0.25rem;
+}
+
+.star-wrapper {
+  display: inline-flex;
+  align-items: center;
 }
 
 .star-icon-gold {
   color: #fbbf24;
+  filter: drop-shadow(0 0 5px rgba(251, 191, 36, 0.4));
 }
 
-/* Card Quote Content */
+/* Card Quote Body */
 .card-quote-content {
   position: relative;
   z-index: 1;
   flex: 1;
+  display: flex;
+  align-items: flex-start;
   margin-bottom: 2rem;
 }
 
 .card-quote-text {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   font-size: 0.98rem;
-  line-height: 1.7;
-  color: #cbd5e1;
+  line-height: 1.76;
+  color: #f1f5f9;
   margin: 0;
-  font-style: normal;
+  padding: 0;
   letter-spacing: -0.005em;
+  font-weight: 400;
+  border: none;
 }
 
 /* ==========================================================================
-   CARD FOOTER: CLIENT AVATAR PORTRAIT & DETAILS
+   CARD FOOTER: CLIENT AVATAR & CREDENTIALS
    ========================================================================== */
 .card-client-footer {
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
-  gap: 1.1rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  gap: 1.15rem;
+  padding-top: 1.35rem;
+  border-top: 1px solid rgba(251, 191, 36, 0.16);
+  margin-top: auto;
 }
 
-/* Elegantly sized portrait avatar (52px diameter) */
+/* 52px Portrait Avatar with Gold Ring */
 .client-avatar-wrapper {
   position: relative;
   width: 52px;
@@ -309,15 +357,19 @@
   border-radius: 50%;
   flex-shrink: 0;
   border: 2px solid rgba(251, 191, 36, 0.45);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 12px rgba(251, 191, 36, 0.15);
-  background-color: #0c1222;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.7),
+    0 0 15px rgba(251, 191, 36, 0.15);
+  background-color: #090e1c;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
 }
 
 .testimonial-card:hover .client-avatar-wrapper {
   transform: scale(1.05);
-  border-color: #fbbf24;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7), 0 0 18px rgba(251, 191, 36, 0.35);
+  border-color: #fde047;
+  box-shadow: 
+    0 6px 20px rgba(0, 0, 0, 0.8),
+    0 0 20px rgba(251, 191, 36, 0.4);
 }
 
 .client-avatar-img {
@@ -329,12 +381,12 @@
   display: block;
 }
 
-/* Fallback monogram in case an image fails to load */
+/* Fallback Monogram */
 .client-avatar-fallback {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: linear-gradient(135deg, rgba(251, 191, 36, 0.25) 0%, rgba(245, 158, 11, 0.08) 100%);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.25) 0%, rgba(245, 158, 11, 0.1) 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -352,19 +404,26 @@
   position: absolute;
   inset: -3px;
   border-radius: 50%;
-  border: 1px solid rgba(251, 191, 36, 0.2);
+  border: 1px solid rgba(251, 191, 36, 0.25);
   pointer-events: none;
+  transition: border-color 0.3s ease;
 }
 
+.testimonial-card:hover .avatar-ring-glow {
+  border-color: rgba(251, 191, 36, 0.5);
+}
+
+/* Client Details Typography */
 .client-details {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
+  overflow: hidden;
 }
 
 .client-name {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.04rem;
   font-weight: 750;
   color: #ffffff;
   margin: 0;
@@ -372,37 +431,41 @@
 }
 
 .client-role {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 650;
   color: #fbbf24;
   margin: 0;
+  letter-spacing: 0.01em;
 }
 
 .client-company {
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.78rem;
   color: #94a3b8;
   margin: 0;
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.4rem;
 }
 
 .company-icon {
-  color: #64748b;
+  color: #fbbf24;
+  opacity: 0.7;
   flex-shrink: 0;
 }
 
-/* Corner Subtle Glow */
+/* Corner Ambient Glow */
 .card-corner-glow {
   position: absolute;
-  bottom: -20px;
-  right: -20px;
-  width: 90px;
-  height: 90px;
+  bottom: -25px;
+  right: -25px;
+  width: 95px;
+  height: 95px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(251, 191, 36, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.16) 0%, transparent 70%);
   pointer-events: none;
-  filter: blur(15px);
+  filter: blur(18px);
   opacity: 0;
   transition: opacity 0.35s ease;
 }
@@ -412,26 +475,138 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN
+   MOBILE ACCESSIBLE CAROUSEL MODE (Hidden on Desktop & Tablet)
    ========================================================================== */
+.testimonials-mobile-carousel {
+  display: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN SYSTEM
+   ========================================================================== */
+/* Tablet Breakpoint (1024px to 1180px) */
+@media (max-width: 1180px) {
+  .testimonials-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.75rem;
+  }
+}
+
+/* Small Tablet & Mobile Breakpoints */
 @media (max-width: 768px) {
   .testimonials-section {
-    padding: 90px 1.25rem 100px;
+    padding: 95px 1.25rem 110px;
   }
 
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .testimonials-header {
+    margin-bottom: 3.5rem;
+    gap: 1rem;
+  }
+
+  .testimonials-main-title {
+    font-size: clamp(1.6rem, 5vw, 1.95rem);
   }
 
   .testimonial-metrics-strip {
     flex-direction: column;
-    gap: 0.75rem;
-    padding: 1.25rem 1.5rem;
+    gap: 0.85rem;
+    padding: 1.25rem 1.6rem;
     border-radius: 18px;
+    width: 100%;
+    max-width: 360px;
   }
 
   .metric-divider {
     display: none;
+  }
+
+  /* Switch from Grid to Accessible Carousel for Mobile Smoothness */
+  .testimonials-grid-wrapper {
+    display: none;
+  }
+
+  .testimonials-mobile-carousel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .carousel-stage {
+    position: relative;
+    width: 100%;
+  }
+
+  .testimonial-card.mobile-card {
+    min-height: 380px;
+    padding: 1.85rem 1.6rem 1.75rem;
+  }
+
+  .mobile-carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+  }
+
+  .carousel-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(18, 23, 35, 0.9);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    color: #fbbf24;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  .carousel-btn:hover,
+  .carousel-btn:active {
+    background: #fbbf24;
+    color: #04060C;
+    border-color: #fde047;
+  }
+
+  .carousel-dots {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .carousel-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.18);
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.3s ease;
+  }
+
+  .carousel-dot.active-dot {
+    width: 24px;
+    background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY - REDUCED MOTION PREFERENCES
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-card,
+  .card-top-accent-line,
+  .client-avatar-wrapper,
+  .star-wrapper,
+  .card-corner-glow {
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
   }
 }

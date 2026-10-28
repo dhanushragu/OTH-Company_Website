@@ -1,0 +1,483 @@
+/* ==========================================================================
+   OFFICEHUB TECH - ABOUT SECTION
+   Style: ServicesSection Visual Identity & Composition
+   - Left: 4:5 Portrait Image Card (/images/OfficeHub Tech Ranked #1 Globally.png)
+   - Right: Unboxed editorial typography flow, 4 pillars & Know More CTA
+   Theme: Pure Luxury Obsidian Black & Radiant Warm Gold
+   ========================================================================== */
+
+.about-section {
+  position: relative;
+  background-color: #04060C;
+  padding: 120px 2rem 140px;
+  overflow: hidden;
+  color: #f8fafc;
+  border-top: 1px solid rgba(251, 191, 36, 0.15);
+}
+
+/* Background Atmosphere */
+.about-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(160px);
+}
+
+.about-ambient-glow.glow-gold-top {
+  top: 5%;
+  left: 10%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
+}
+
+.about-ambient-glow.glow-gold-bottom {
+  bottom: 5%;
+  right: 10%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.07) 0%, transparent 70%);
+}
+
+.about-grid-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(rgba(251, 191, 36, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 191, 36, 0.018) 1px, transparent 1px);
+  background-size: 68px 68px;
+  opacity: 0.65;
+}
+
+.about-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   SECTION HEADER (Unified font-size: clamp(1.8rem, 2.6vw, 2.4rem))
+   ========================================================================== */
+.about-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 3.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.about-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.32);
+  padding: 0.4rem 1.15rem;
+  border-radius: 9999px;
+  box-shadow: 0 0 20px rgba(251, 191, 36, 0.15);
+}
+
+.eyebrow-gold-sparkle {
+  color: #fde047;
+}
+
+.about-main-title {
+  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', serif;
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
+  font-weight: 850;
+  line-height: 1.18;
+  letter-spacing: -0.025em;
+  margin: 0;
+  color: #ffffff;
+}
+
+.title-lead {
+  color: #ffffff;
+}
+
+.title-gold-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #fbbf24 60%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.35));
+}
+
+.about-subheading {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  max-width: 680px;
+  margin: 0;
+}
+
+.about-gold-line-divider {
+  position: relative;
+  width: 140px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+  margin-top: 0.3rem;
+}
+
+.divider-sparkle-gem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 6px;
+  height: 6px;
+  background: #fbbf24;
+  box-shadow: 0 0 10px #fbbf24;
+}
+
+/* ==========================================================================
+   STORY SHOWCASE COMPOSITION (ServicesSection Style)
+   ========================================================================== */
+.about-story-showcase {
+  width: 100%;
+}
+
+.about-story-row {
+  display: grid;
+  grid-template-columns: minmax(360px, 440px) 1fr;
+  gap: 4.5rem;
+  align-items: center;
+}
+
+/* Left: 4:5 Portrait Image Card */
+.about-portrait-column {
+  position: relative;
+  width: 100%;
+}
+
+.about-portrait-card-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.about-portrait-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1182 / 1330;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #090d16;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.8),
+    0 0 45px rgba(251, 191, 36, 0.14);
+}
+
+.about-portrait-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.about-luxury-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(4, 6, 12, 0.15) 50%,
+    rgba(4, 6, 12, 0.65) 100%
+  );
+  pointer-events: none;
+}
+
+/* Floating Rank Badge (#1) */
+.about-floating-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(6, 9, 18, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(251, 191, 36, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 16px rgba(251, 191, 36, 0.4);
+}
+
+.badge-rank-text {
+  font-family: 'Syne', 'Cinzel', serif;
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: #fbbf24;
+}
+
+.badge-glow-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  animation: badgePulse 2.8s infinite ease-in-out;
+}
+
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.15); opacity: 0.15; }
+}
+
+.about-gold-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  border: 1.5px solid rgba(251, 191, 36, 0.35);
+  pointer-events: none;
+  box-shadow: inset 0 0 20px rgba(251, 191, 36, 0.1);
+}
+
+/* Right: Typography Column */
+.about-typography-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-typography-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.about-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: fit-content;
+  padding: 0.35rem 0.95rem;
+  border-radius: 9999px;
+  background: rgba(251, 191, 36, 0.09);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.tag-pill-icon {
+  color: #fde047;
+}
+
+.about-headline {
+  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', serif;
+  font-size: clamp(1.4rem, 1.9vw, 1.85rem);
+  font-weight: 800;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.headline-gold-gradient {
+  background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #fbbf24 60%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.3));
+}
+
+.about-tagline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.08rem;
+  font-weight: 650;
+  line-height: 1.55;
+  color: #fde047;
+  margin: 0;
+}
+
+.about-description {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+/* 4 Pillars Grid (ServicesSection style) */
+.about-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
+.about-pillar-card {
+  padding: 1.1rem 1.2rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.about-pillar-card:hover,
+.about-pillar-card.pillar-active {
+  background: rgba(251, 191, 36, 0.07);
+  border-color: rgba(251, 191, 36, 0.5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(251, 191, 36, 0.15);
+  transform: translateY(-2px);
+}
+
+.pillar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.pillar-check-icon {
+  color: #fbbf24;
+  flex-shrink: 0;
+}
+
+.pillar-title {
+  font-family: 'Syne', 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 750;
+  color: #ffffff;
+  margin: 0;
+}
+
+.pillar-desc {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Action Container */
+.about-action-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.8rem;
+}
+
+.about-gold-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.85rem 1.8rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #fde047 0%, #fbbf24 50%, #f59e0b 100%);
+  color: #04060C;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 25px rgba(251, 191, 36, 0.4);
+  transition: all 0.3s ease;
+}
+
+.about-gold-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 35px rgba(251, 191, 36, 0.6);
+  filter: brightness(1.05);
+}
+
+.btn-arrow {
+  transition: transform 0.3s ease;
+}
+
+.about-gold-cta-btn:hover .btn-arrow {
+  transform: translate(2px, -2px);
+}
+
+.about-trust-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 650;
+  color: #94a3b8;
+}
+
+.trust-shield-icon {
+  color: #fbbf24;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .about-story-row {
+    grid-template-columns: minmax(320px, 380px) 1fr;
+    gap: 3rem;
+  }
+
+  .about-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-section {
+    padding: 80px 1.25rem 100px;
+  }
+
+  .about-main-title {
+    font-size: clamp(1.6rem, 5vw, 1.95rem);
+  }
+
+  .about-story-row {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-portrait-card-wrapper {
+    max-width: 320px;
+  }
+
+  .about-headline {
+    font-size: 1.35rem;
+  }
+
+  .about-tagline {
+    font-size: 1rem;
+  }
+
+  .about-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-action-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+}
+

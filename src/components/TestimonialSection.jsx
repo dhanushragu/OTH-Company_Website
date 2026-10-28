@@ -1,6 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Quote, Star, Sparkles, Building2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Quote, Star, Sparkles, Building2, ChevronLeft, ChevronRight } from 'lucide-react';
 import './TestimonialSection.css';
 
 const testimonials = [
@@ -79,34 +79,45 @@ const testimonials = [
 ];
 
 export default function TestimonialSection() {
+  const [mobileIndex, setMobileIndex] = useState(0);
+
+  const prevMobileCard = () => {
+    setMobileIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+  };
+
+  const nextMobileCard = () => {
+    setMobileIndex((prev) => (prev + 1) % testimonials.length);
+  };
+
   return (
     <section className="testimonials-section" id="testimonials">
-      {/* Ambient background glows */}
-      <div className="testimonial-glow glow-top" aria-hidden="true" />
-      <div className="testimonial-glow glow-bottom" aria-hidden="true" />
-      <div className="testimonial-grid-pattern" aria-hidden="true" />
+      {/* Ambient lighting & backdrop */}
+      <div className="testimonial-ambient-glow glow-emerald-top" aria-hidden="true" />
+      <div className="testimonial-ambient-glow glow-gold-center" aria-hidden="true" />
+      <div className="testimonial-ambient-glow glow-emerald-bottom" aria-hidden="true" />
+      <div className="testimonial-subtle-mesh" aria-hidden="true" />
 
       <div className="testimonials-container">
-        {/* Section Header with "Trusted by Business. Proven by Results" */}
+        {/* Editorial Section Header */}
         <motion.div
           className="testimonials-header"
-          initial={{ opacity: 0, y: 35 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         >
           <div className="testimonial-eyebrow-pill">
-            <Sparkles size={14} className="eyebrow-gold-sparkle" />
-            <span>CLIENT REPUTATION & SUCCESS</span>
+            <Sparkles size={13} className="eyebrow-gold-sparkle" />
+            <span>CLIENT REPUTATION & PROVEN IMPACT</span>
           </div>
 
           <h2 className="testimonials-main-title">
-            <span className="quote-text-primary">"Trusted by Business.</span>{' '}
-            <span className="quote-gold-gradient">Proven by Results"</span>
+            <span className="quote-text-primary">Trusted by Industry Leaders.</span>{' '}
+            <span className="quote-gold-gradient">Proven by Results.</span>
           </h2>
 
           <p className="testimonials-subheading">
-            Hear directly from industry leaders, founders, and executives who trust OfficeHub Tech to engineer their mission-critical business systems.
+            Direct perspectives from executives and founders who trust OfficeHub Tech to engineer scalable, mission-critical business platforms.
           </p>
 
           {/* Social Proof Metric Bar */}
@@ -128,79 +139,180 @@ export default function TestimonialSection() {
           </div>
         </motion.div>
 
-        {/* 6 Luxury Testimonial Cards Grid */}
-        <div className="testimonials-grid">
-          {testimonials.map((item, index) => (
-            <motion.div
-              key={item.id}
-              className="testimonial-card"
-              initial={{ opacity: 0, y: 45 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{
-                duration: 0.75,
-                ease: [0.16, 1, 0.3, 1],
-                delay: index * 0.1
-              }}
-              whileHover={{ y: -6 }}
-            >
-              {/* Gold gradient top border accent */}
-              <div className="card-gold-accent-line" />
+        {/* Desktop & Tablet 3-Column Editorial Grid */}
+        <div className="testimonials-grid-wrapper">
+          <div className="testimonials-grid">
+            {testimonials.map((item, index) => (
+              <motion.article
+                key={item.id}
+                className="testimonial-card"
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{
+                  duration: 0.65,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: index * 0.08
+                }}
+              >
+                {/* Champagne Gold & Emerald Card Accent Line */}
+                <div className="card-top-accent-line" />
 
-              {/* Watermark Quote Icon */}
-              <div className="card-watermark-quote" aria-hidden="true">
-                <Quote size={84} />
-              </div>
-
-              {/* Card Header: Tag & Stars */}
-              <div className="card-header-row">
-                <span className="card-tag-badge">{item.tag}</span>
-                <div className="card-stars-row" aria-label="5 out of 5 stars">
-                  {[...Array(item.rating)].map((_, i) => (
-                    <Star key={i} size={14} className="star-icon-gold" fill="#fbbf24" />
-                  ))}
+                {/* Subtle Editorial Watermark Quote Motif */}
+                <div className="card-watermark-quote" aria-hidden="true">
+                  <Quote size={68} />
                 </div>
-              </div>
 
-              {/* Testimonial Quote Body */}
-              <div className="card-quote-content">
-                <p className="card-quote-text">"{item.quote}"</p>
-              </div>
-
-              {/* Card Footer: Client Info with Professional Avatar Portrait */}
-              <div className="card-client-footer">
-                <div className="client-avatar-wrapper">
-                  <img
-                    src={item.image}
-                    alt={`${item.name} portrait`}
-                    className="client-avatar-img"
-                    loading="lazy"
-                    onError={(e) => {
-                      // Fallback to monogram if image fails to load
-                      e.currentTarget.style.display = 'none';
-                      e.currentTarget.nextElementSibling?.classList.remove('hidden-fallback');
-                    }}
-                  />
-                  <div className="client-avatar-fallback hidden-fallback" aria-hidden="true">
-                    <span>{item.initials}</span>
+                {/* Card Top: Category Badge & Gold Star Rating */}
+                <div className="card-header-row">
+                  <span className="card-tag-badge">{item.tag}</span>
+                  <div className="card-stars-row" aria-label={`${item.rating} out of 5 stars`}>
+                    {[...Array(item.rating)].map((_, i) => (
+                      <motion.span
+                        key={i}
+                        className="star-wrapper"
+                        initial={{ opacity: 0, scale: 0.7 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.35, delay: 0.2 + i * 0.05 }}
+                      >
+                        <Star size={13} className="star-icon-gold" fill="#D6B36A" />
+                      </motion.span>
+                    ))}
                   </div>
-                  <div className="avatar-ring-glow" />
                 </div>
 
-                <div className="client-details">
-                  <h4 className="client-name">{item.name}</h4>
-                  <p className="client-role">{item.role}</p>
-                  <p className="client-company">
-                    <Building2 size={12} className="company-icon" />
-                    <span>{item.company}</span>
-                  </p>
+                {/* Testimonial Quotation */}
+                <div className="card-quote-content">
+                  <blockquote className="card-quote-text">
+                    "{item.quote}"
+                  </blockquote>
                 </div>
-              </div>
 
-              {/* Card Corner Subtle Highlight */}
-              <div className="card-corner-glow" />
-            </motion.div>
-          ))}
+                {/* Bottom Profile Row */}
+                <div className="card-client-footer">
+                  <div className="client-avatar-wrapper">
+                    <img
+                      src={item.image}
+                      alt={`${item.name}, ${item.role} at ${item.company}`}
+                      className="client-avatar-img"
+                      loading="lazy"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                        e.currentTarget.nextElementSibling?.classList.remove('hidden-fallback');
+                      }}
+                    />
+                    <div className="client-avatar-fallback hidden-fallback" aria-hidden="true">
+                      <span>{item.initials}</span>
+                    </div>
+                    <div className="avatar-ring-glow" />
+                  </div>
+
+                  <div className="client-details">
+                    <h3 className="client-name">{item.name}</h3>
+                    <p className="client-role">{item.role}</p>
+                    <p className="client-company">
+                      <Building2 size={12} className="company-icon" />
+                      <span>{item.company}</span>
+                    </p>
+                  </div>
+                </div>
+
+                {/* Subtle Corner Glow on Hover */}
+                <div className="card-corner-glow" />
+              </motion.article>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile Accessible Carousel Mode */}
+        <div className="testimonials-mobile-carousel">
+          <div className="carousel-stage">
+            <AnimatePresence mode="wait">
+              <motion.article
+                key={testimonials[mobileIndex].id}
+                className="testimonial-card mobile-card"
+                initial={{ opacity: 0, x: 25 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -25 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div className="card-top-accent-line" />
+                <div className="card-watermark-quote" aria-hidden="true">
+                  <Quote size={56} />
+                </div>
+
+                <div className="card-header-row">
+                  <span className="card-tag-badge">{testimonials[mobileIndex].tag}</span>
+                  <div className="card-stars-row" aria-label={`${testimonials[mobileIndex].rating} out of 5 stars`}>
+                    {[...Array(testimonials[mobileIndex].rating)].map((_, i) => (
+                      <Star key={i} size={13} className="star-icon-gold" fill="#D6B36A" />
+                    ))}
+                  </div>
+                </div>
+
+                <div className="card-quote-content">
+                  <blockquote className="card-quote-text">
+                    "{testimonials[mobileIndex].quote}"
+                  </blockquote>
+                </div>
+
+                <div className="card-client-footer">
+                  <div className="client-avatar-wrapper">
+                    <img
+                      src={testimonials[mobileIndex].image}
+                      alt={`${testimonials[mobileIndex].name}, ${testimonials[mobileIndex].role} at ${testimonials[mobileIndex].company}`}
+                      className="client-avatar-img"
+                      loading="lazy"
+                    />
+                    <div className="avatar-ring-glow" />
+                  </div>
+
+                  <div className="client-details">
+                    <h3 className="client-name">{testimonials[mobileIndex].name}</h3>
+                    <p className="client-role">{testimonials[mobileIndex].role}</p>
+                    <p className="client-company">
+                      <Building2 size={12} className="company-icon" />
+                      <span>{testimonials[mobileIndex].company}</span>
+                    </p>
+                  </div>
+                </div>
+              </motion.article>
+            </AnimatePresence>
+          </div>
+
+          {/* Mobile Controls */}
+          <div className="mobile-carousel-controls">
+            <button
+              type="button"
+              className="carousel-btn prev-btn"
+              onClick={prevMobileCard}
+              aria-label="Previous testimonial"
+            >
+              <ChevronLeft size={20} />
+            </button>
+
+            <div className="carousel-dots">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  className={`carousel-dot ${i === mobileIndex ? 'active-dot' : ''}`}
+                  onClick={() => setMobileIndex(i)}
+                  aria-label={`Go to testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              type="button"
+              className="carousel-btn next-btn"
+              onClick={nextMobileCard}
+              aria-label="Next testimonial"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
         </div>
       </div>
     </section>

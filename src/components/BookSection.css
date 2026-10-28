@@ -104,9 +104,9 @@
 
 .book-main-title {
   font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
+  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
   font-weight: 850;
-  line-height: 1.16;
+  line-height: 1.18;
   letter-spacing: -0.025em;
   color: #ffffff;
   margin: 0;
@@ -731,7 +731,7 @@
   }
 
   .book-main-title {
-    font-size: 2.1rem;
+    font-size: clamp(1.6rem, 5vw, 1.95rem);
   }
 
   .ceo-credentials-bar {
