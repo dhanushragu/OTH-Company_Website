@@ -1,0 +1,319 @@
+/* ==========================================================================
+   OFFICEHUB TECH - ZOHO CHEAT SHEET BANNER SECTION
+   - Layout: Headline on the left, "DOWNLOAD NOW" button on the right
+   - Link: https://officehubtech.com/cheatsheet/
+   - Style: Concentric glowing tech arcs, floating nodes (matching reference image)
+   - Palette: Pure Rich Black (#030407) & Pure Bright Gold (#FFD700 / #D4AF37)
+   ========================================================================== */
+
+.csb-master-section {
+  position: relative;
+  background-color: #030407;
+  color: #FFFFFF;
+  padding: 80px 2rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  border-top: 1px solid rgba(255, 215, 0, 0.18);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+/* Atmospheric Ambient Glows */
+.csb-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(130px);
+  z-index: 0;
+}
+
+.csb-ambient-glow.glow-left {
+  top: 50%;
+  left: -80px;
+  transform: translateY(-50%);
+  width: 520px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+}
+
+.csb-ambient-glow.glow-right {
+  top: 50%;
+  right: -80px;
+  transform: translateY(-50%);
+  width: 550px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.09) 0%, transparent 70%);
+}
+
+.csb-grid-mesh {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 215, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  opacity: 0.55;
+  z-index: 0;
+}
+
+/* ==========================================================================
+   CONCENTRIC DIGITAL TECH ARCS (Faithfully recreated from Reference Image)
+   ========================================================================== */
+.csb-tech-arc {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 440px;
+  height: 440px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.csb-tech-arc.arc-left {
+  left: -140px;
+}
+
+.csb-tech-arc.arc-right {
+  right: -140px;
+}
+
+.arc-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 215, 0, 0.22);
+}
+
+.ring-1 {
+  width: 100%;
+  height: 100%;
+  border-color: rgba(255, 215, 0, 0.12);
+  border-style: dashed;
+}
+
+.ring-2 {
+  width: 72%;
+  height: 72%;
+  border-color: rgba(255, 215, 0, 0.28);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.08);
+}
+
+.ring-3 {
+  width: 45%;
+  height: 45%;
+  border-color: rgba(255, 215, 0, 0.45);
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.15);
+}
+
+/* Floating Digital Tech Accents */
+.csb-tech-node {
+  position: absolute;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.node-1 {
+  top: 18%;
+  left: 22%;
+  width: 7px;
+  height: 7px;
+  background: #FFD700;
+  border-radius: 2px;
+  box-shadow: 0 0 10px #FFD700;
+  opacity: 0.6;
+}
+
+.node-2 {
+  bottom: 12%;
+  left: 3%;
+  width: 10px;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.node-3 {
+  top: 22%;
+  right: 32%;
+  width: 6px;
+  height: 6px;
+  background: #FFD700;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #FFD700;
+}
+
+.node-pill {
+  bottom: 18%;
+  right: 22%;
+  width: 120px;
+  height: 16px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 215, 0, 0.18), transparent);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+}
+
+/* ==========================================================================
+   MAIN CONTAINER & HORIZONTAL ROW
+   ========================================================================== */
+.csb-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1300px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.csb-inner-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  width: 100%;
+}
+
+/* Left Typography */
+.csb-text-column {
+  max-width: 720px;
+}
+
+.csb-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  color: #FFD700;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 0.95rem;
+  box-shadow: 0 0 14px rgba(255, 215, 0, 0.12);
+}
+
+.csb-sparkle {
+  color: #FFE57F;
+}
+
+.csb-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin: 0 0 0.85rem;
+}
+
+.csb-gold-gradient {
+  background: linear-gradient(135deg, #FFF2A8 0%, #FFD700 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.csb-subtext {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #D1D5DB;
+  margin: 0;
+  max-width: 580px;
+  position: relative;
+  z-index: 5;
+}
+
+/* Right Action Column */
+.csb-action-column {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.csb-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+  color: #030407;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: 8px; /* Clean rectangular button matching reference */
+  border: 1px solid #FFE57F;
+  box-shadow: 
+    0 10px 28px rgba(0, 0, 0, 0.8),
+    0 0 30px rgba(255, 215, 0, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.csb-download-btn:hover {
+  background: linear-gradient(135deg, #FFF2A8 0%, #FFD700 100%);
+  box-shadow: 
+    0 14px 35px rgba(0, 0, 0, 0.9),
+    0 0 45px rgba(255, 215, 0, 0.7);
+  transform: translateY(-2px);
+}
+
+.csb-download-icon {
+  color: #030407;
+}
+
+.csb-arrow-icon {
+  color: #030407;
+  transition: transform 0.25s ease;
+}
+
+.csb-download-btn:hover .csb-arrow-icon {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Tablets & Mobile)
+   ========================================================================== */
+@media (max-width: 960px) {
+  .csb-master-section {
+    padding: 70px 1.5rem;
+  }
+
+  .csb-inner-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .csb-action-column {
+    width: 100%;
+  }
+
+  .csb-download-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .csb-headline {
+    font-size: 1.85rem;
+  }
+
+  .csb-tech-arc {
+    display: none;
+  }
+}
+

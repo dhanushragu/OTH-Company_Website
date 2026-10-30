@@ -222,10 +222,6 @@ export default function ServicesSection() {
             <span className="title-gold-gradient">Services</span>
           </h2>
 
-          <p className="services-subheading">
-            OfficeHub Tech helps forward-thinking businesses connect, customize, automate, and elevate their digital operations through disciplined enterprise engineering.
-          </p>
-
           <div className="services-gold-line-divider" aria-hidden="true">
             <span className="divider-sparkle-gem" />
           </div>

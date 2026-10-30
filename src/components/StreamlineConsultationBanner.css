@@ -1,0 +1,260 @@
+/* ==========================================================================
+   OFFICEHUB TECH - STREAMLINE YOUR BUSINESS PROCESS CONSULTATION BANNER
+   - Headline: Streamline Your Business Process With Our Zoho Consultation
+   - Action: "FREE CONSULTATION" -> https://calendly.com/officehubtech
+   - Palette: Pure Rich Black (#030407) & Pure Bright Gold (#FFD700 / #D4AF37)
+   ========================================================================== */
+
+.scb-master-section {
+  position: relative;
+  background-color: #030407;
+  color: #FFFFFF;
+  padding: 100px 2rem;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-top: 1px solid rgba(255, 215, 0, 0.18);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+/* Atmospheric Ambient Glows */
+.scb-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(140px);
+  z-index: 0;
+}
+
+.scb-ambient-glow.glow-top {
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 750px;
+  height: 420px;
+  background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.08) 0%, rgba(212, 175, 55, 0.03) 45%, transparent 70%);
+}
+
+.scb-ambient-glow.glow-bottom {
+  bottom: -40px;
+  right: 15%;
+  width: 500px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.07) 0%, transparent 70%);
+}
+
+.scb-grid-mesh {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 215, 0, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.025) 1px, transparent 1px);
+  background-size: 52px 52px;
+  pointer-events: none;
+  opacity: 0.55;
+  z-index: 0;
+}
+
+/* Cyber tech wave strokes inspired by reference */
+.scb-wave-line {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.scb-wave-line.wave-1 {
+  top: 25%;
+  left: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+}
+
+.scb-wave-line.wave-2 {
+  bottom: 25%;
+  left: 0;
+  background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.15), transparent);
+}
+
+.scb-node {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.scb-node.node-left {
+  top: 35%;
+  left: 10%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FFD700;
+  box-shadow: 0 0 12px #FFD700;
+  opacity: 0.7;
+}
+
+.scb-node.node-right {
+  bottom: 30%;
+  right: 12%;
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.8);
+  box-shadow: 0 0 14px rgba(255, 255, 255, 0.6);
+  transform: rotate(45deg);
+}
+
+/* Container */
+.scb-container {
+  position: relative;
+  z-index: 2;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.scb-content-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.scb-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 16px;
+  border-radius: 999px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  color: #FFD700;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.15);
+}
+
+.scb-sparkle {
+  color: #FFE57F;
+}
+
+.scb-headline {
+  font-family: 'Playfair Display', 'Space Grotesk', serif;
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+  margin: 0 0 1.15rem;
+  max-width: 920px;
+}
+
+.scb-gold-gradient {
+  background: linear-gradient(135deg, #FFF2A8 0%, #FFD700 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.scb-gold-divider {
+  position: relative;
+  width: 84px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FFD700, transparent);
+  margin-bottom: 1.15rem;
+}
+
+.scb-sparkle-gem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 5px;
+  height: 5px;
+  background: #FFD700;
+  box-shadow: 0 0 8px #FFD700;
+}
+
+.scb-subtext {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.96rem, 1.1vw, 1.08rem);
+  line-height: 1.65;
+  color: #D1D5DB;
+  max-width: 680px;
+  margin: 0 0 2.25rem;
+}
+
+/* Calendly Free Consultation Button */
+.scb-action-row {
+  display: flex;
+  justify-content: center;
+}
+
+.scb-consultation-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 40px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #FFD700 0%, #D4AF37 100%);
+  color: #030407;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid #FFE57F;
+  cursor: pointer;
+  box-shadow: 
+    0 10px 28px rgba(0, 0, 0, 0.8),
+    0 0 32px rgba(255, 215, 0, 0.45);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.scb-consultation-btn:hover {
+  background: linear-gradient(135deg, #FFF2A8 0%, #FFD700 100%);
+  box-shadow: 
+    0 14px 35px rgba(0, 0, 0, 0.9),
+    0 0 45px rgba(255, 215, 0, 0.75);
+  transform: translateY(-2px);
+}
+
+.scb-calendar-icon {
+  color: #030407;
+}
+
+.scb-arrow-icon {
+  color: #030407;
+  transition: transform 0.25s ease;
+}
+
+.scb-consultation-btn:hover .scb-arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .scb-master-section {
+    padding: 70px 1.5rem;
+  }
+
+  .scb-headline {
+    font-size: 2rem;
+  }
+
+  .scb-consultation-btn {
+    padding: 14px 28px;
+    font-size: 0.92rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+

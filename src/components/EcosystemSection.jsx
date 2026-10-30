@@ -56,6 +56,16 @@ const OTHER_TOOLS = [
   { id: 'zendesk', name: 'Zendesk', icon: '/other-tools-svgs/zendesk.svg' },
 ];
 
+const TECHNOLOGIES = [
+  { id: 'aws-tech', name: 'AWS Cloud', icon: '/technologies/aws.jpg' },
+  { id: 'html-tech', name: 'HTML5', icon: '/technologies/HTML.jpg' },
+  { id: 'java-tech', name: 'Java', icon: '/technologies/java.jpg' },
+  { id: 'javascript-tech', name: 'JavaScript', icon: '/technologies/javascript.jpg' },
+  { id: 'nodejs-tech', name: 'Node.js', icon: '/technologies/node js.jpg' },
+  { id: 'python-tech', name: 'Python', icon: '/technologies/python.jpg' },
+  { id: 'react-tech', name: 'React', icon: '/technologies/React.jpg' },
+];
+
 export default function EcosystemSection() {
   const [activeTab, setActiveTab] = useState('zoho');
   const [hoveredProduct, setHoveredProduct] = useState(null);
@@ -121,6 +131,7 @@ export default function EcosystemSection() {
           >
             <span className="tab-indicator" />
             <span className="tab-label">Technologies</span>
+            <span className="tab-count">7</span>
           </button>
         </div>
 
@@ -194,18 +205,38 @@ export default function EcosystemSection() {
           )}
 
           {activeTab === 'tech' && (
-            <div className="ecosystem-placeholder-card">
-              <div className="placeholder-icon-circle">
-                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-                  <polyline points="16 18 22 12 16 6" />
-                  <polyline points="8 6 2 12 8 18" />
-                </svg>
-              </div>
-              <h3 className="placeholder-title">Technologies & Stacks</h3>
-              <p className="placeholder-text">
-                Custom Deluge scripting, REST APIs, Webhook architectures, serverless Catalyst functions, React web apps, Node.js microservices, and enterprise automation pipelines.
-              </p>
-              <div className="placeholder-badge">Technology Stacks Loading Soon</div>
+            <div className="technologies-grid">
+              {TECHNOLOGIES.map((tech) => {
+                const isHovered = hoveredProduct === tech.id;
+                return (
+                  <div
+                    key={tech.id}
+                    className={`tech-brand-card ${isHovered ? 'is-hovered' : ''}`}
+                    onMouseEnter={() => setHoveredProduct(tech.id)}
+                    onMouseLeave={() => setHoveredProduct(null)}
+                    title={tech.name}
+                  >
+                    {/* Glowing highlight aura */}
+                    <div className="card-ambient-aura" aria-hidden="true" />
+
+                    {/* Technology Icon Wrapper */}
+                    <div className="tech-icon-wrapper">
+                      <img
+                        src={tech.icon}
+                        alt={`${tech.name} logo`}
+                        className="tech-icon-img"
+                        loading="lazy"
+                      />
+                    </div>
+
+                    {/* Technology Name */}
+                    <span className="tech-name-label">{tech.name}</span>
+
+                    {/* Border glow shine */}
+                    <div className="card-border-glow" aria-hidden="true" />
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>

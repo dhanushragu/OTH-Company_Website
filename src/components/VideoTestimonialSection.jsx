@@ -130,21 +130,40 @@ export default function VideoTestimonialSection() {
             {/* Television Device Enclosure */}
             <div className="vt-tv-wrapper">
               
-              {/* TV Top Header / Status bar with subtle TV Brand & Speaker Grill */}
-              <div className="vt-tv-top-bezel">
-                <div className="vt-tv-brand-pill">
-                  <Tv size={13} className="vt-tv-icon" />
-                  <span>OHT CINEMA DISPLAY</span>
-                </div>
-                <div className="vt-tv-status-dots">
-                  <span className="tv-dot tv-green" />
-                  <span className="tv-dot tv-gold" />
-                  <span className="tv-dot tv-red" />
-                </div>
+              {/* Official Original YouTube Brand Logo Placed Above TV at Left Side */}
+              <div className="vt-tv-header-row">
+                <a 
+                  href="https://www.youtube.com/watch?v=2i4m3VmT9Q8" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="vt-tv-youtube-badge"
+                  aria-label="Watch on YouTube"
+                >
+                  {/* YouTube Official Red Icon */}
+                  <svg 
+                    className="vt-youtube-icon" 
+                    viewBox="0 0 28 20" 
+                    width="32" 
+                    height="23" 
+                    fill="none"
+                  >
+                    <path
+                      d="M27.473 3.064A3.5 3.5 0 0 0 25.009.6C22.836 0 14 0 14 0S5.164 0 2.991.6A3.5 3.5 0 0 0 .527 3.064C0 5.236 0 9.773 0 9.773s0 4.536.527 6.709a3.5 3.5 0 0 0 2.464 2.464c2.173.6 11.009.6 11.009.6s8.836 0 11.009-.6a3.5 3.5 0 0 0 2.464-2.464c.527-2.173.527-6.709.527-6.709s0-4.536-.527-6.709z"
+                      fill="#FF0000"
+                    />
+                    <path d="M11.2 13.927l7.273-4.154L11.2 5.618v8.309z" fill="#FFFFFF" />
+                  </svg>
+                  {/* Clean, perfectly rendered YouTube Text */}
+                  <span className="vt-youtube-text-wordmark">YouTube</span>
+                </a>
               </div>
 
-              {/* TV Screen Outer Frame with Bezel and Glare effect */}
+              {/* Television Screen Outer Frame with Bezel and Glare effect */}
               <div className="vt-tv-screen-chassis">
+                {/* Piano Black Gloss Glare Highlights */}
+                <div className="vt-tv-gloss-shine-top" aria-hidden="true" />
+                <div className="vt-tv-gloss-reflection-side" aria-hidden="true" />
+
                 <div className="vt-tv-screen-glass">
                   {/* Subtle TV Screen scanlines overlay */}
                   <div className="vt-tv-scanlines" aria-hidden="true" />
@@ -192,15 +211,21 @@ export default function VideoTestimonialSection() {
                   )}
                 </div>
 
-                {/* TV Lower Bezel with Power LED & Audio Mesh */}
+                {/* TV Lower Bezel with Brand Logo & Power LED */}
                 <div className="vt-tv-bottom-bezel">
-                  <div className="vt-tv-speaker-mesh" aria-hidden="true">
-                    <span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span /><span />
+                  <div className="vt-tv-bottom-brand">
+                    <span>OHT VISION</span>
                   </div>
                   <div className="vt-tv-power-led">
                     <span className="vt-led-dot active" />
                     <span className="vt-led-label">LIVE 4K</span>
                   </div>
+                </div>
+
+                {/* Subtle under-bezel TV feet pads */}
+                <div className="vt-tv-chin-feet">
+                  <span className="vt-chin-foot left" />
+                  <span className="vt-chin-foot right" />
                 </div>
               </div>
 

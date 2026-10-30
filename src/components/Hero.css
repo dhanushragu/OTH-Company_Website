@@ -489,7 +489,7 @@
 .hero-stepper-pill.active .stepper-fill {
   background: linear-gradient(90deg, #FFD700, #F59E0B);
   box-shadow: 0 0 12px rgba(255, 215, 0, 0.65);
-  animation: heroStepFill 5.5s linear forwards;
+  animation: heroStepFill 2s linear forwards;
 }
 
 @keyframes heroStepFill {

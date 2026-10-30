@@ -67,11 +67,18 @@
 .solutions-header {
   text-align: center;
   max-width: 860px;
-  margin: 0 auto 3.5rem;
+  margin: 0 auto 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.1rem;
+}
+
+.solutions-circular-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .solutions-eyebrow-pill {

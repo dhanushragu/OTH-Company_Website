@@ -60,13 +60,13 @@ export default function Hero() {
     });
   }, []);
 
-  // Automatic slide rotation every 5.5 seconds, pauses on hover
+  // Automatic slide rotation every 2 seconds (2000ms), only pauses when hovering on interactive buttons
   useEffect(() => {
     if (isPaused) return;
 
     timerRef.current = setInterval(() => {
       setCurrentIndex((prev) => (prev + 1) % heroSlides.length);
-    }, 5500);
+    }, 2000);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
@@ -103,7 +103,7 @@ export default function Hero() {
       scale: 1,
       opacity: 1,
       transition: {
-        duration: 0.95,
+        duration: 0.65,
         ease: [0.22, 1, 0.36, 1],
       },
     },
@@ -112,7 +112,7 @@ export default function Hero() {
       scale: 0.96,
       opacity: 0,
       transition: {
-        duration: 0.65,
+        duration: 0.45,
         ease: [0.22, 1, 0.36, 1],
       },
     },
@@ -124,15 +124,15 @@ export default function Hero() {
     animate: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.08,
-        delayChildren: 0.1,
+        staggerChildren: 0.05,
+        delayChildren: 0.05,
       },
     },
     exit: {
       opacity: 0,
       x: 30,
       transition: {
-        duration: 0.4,
+        duration: 0.3,
         ease: [0.22, 1, 0.36, 1],
       },
     },
@@ -149,7 +149,7 @@ export default function Hero() {
       x: 0,
       filter: 'blur(0px)',
       transition: {
-        duration: 0.75,
+        duration: 0.5,
         ease: [0.22, 1, 0.36, 1],
       },
     },
@@ -159,8 +159,6 @@ export default function Hero() {
     <section 
       className="hero-section" 
       id="home"
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
       aria-label="Office Hub Tech Hero Showcase"
     >
       {/* Ambient background glows & fine mesh */}
@@ -276,12 +274,22 @@ export default function Hero() {
 
                 {/* CTA Action Buttons */}
                 <motion.div variants={textItemVariants} className="hero-actions-cluster">
-                  <a href={currentSlide.primaryCtaLink} className="hero-cta-gold-btn">
+                  <a 
+                    href={currentSlide.primaryCtaLink} 
+                    className="hero-cta-gold-btn"
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                  >
                     <span>{currentSlide.primaryCtaText}</span>
                     <ArrowUpRight size={17} className="cta-arrow" />
                   </a>
 
-                  <a href={currentSlide.secondaryCtaLink} className="hero-cta-outline-btn">
+                  <a 
+                    href={currentSlide.secondaryCtaLink} 
+                    className="hero-cta-outline-btn"
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                  >
                     <span>{currentSlide.secondaryCtaText}</span>
                     <ArrowRight size={15} />
                   </a>
@@ -304,6 +312,8 @@ export default function Hero() {
                     type="button"
                     className={`hero-stepper-pill ${currentIndex === idx ? 'active' : ''}`}
                     onClick={() => handleJump(idx)}
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
                     aria-label={`Jump to slide ${idx + 1}`}
                   >
                     <span className="stepper-fill" />
@@ -319,6 +329,8 @@ export default function Hero() {
                   type="button"
                   className="hero-arrow-circle-btn"
                   onClick={handlePrev}
+                  onMouseEnter={() => setIsPaused(true)}
+                  onMouseLeave={() => setIsPaused(false)}
                   aria-label="Previous Slide"
                 >
                   <ChevronLeft size={18} />
@@ -327,6 +339,8 @@ export default function Hero() {
                   type="button"
                   className="hero-arrow-circle-btn"
                   onClick={handleNext}
+                  onMouseEnter={() => setIsPaused(true)}
+                  onMouseLeave={() => setIsPaused(false)}
                   aria-label="Next Slide"
                 >
                   <ChevronRight size={18} />
