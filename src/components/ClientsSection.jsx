@@ -64,7 +64,7 @@ export default function ClientsSection() {
 
           <div className="marquee-track marquee-scroll-left">
             {[...clientsRow1, ...clientsRow1, ...clientsRow1].map((client, index) => (
-              <div key={`row1-${index}`} className="client-logo-item">
+              <div key={`row1-${index}`} className="client-logo-item" title={client.name}>
                 <img
                   src={client.logo}
                   alt={`${client.name} Logo`}
@@ -76,14 +76,14 @@ export default function ClientsSection() {
           </div>
         </div>
 
-        {/* Set 2: Train Track moving Left to Right (No Background Cards) */}
+        {/* Set 2: Train Track moving Left to Right (Individual White Cards) */}
         <div className="marquee-wrapper marquee-wrapper-offset">
           <div className="marquee-fade-left" aria-hidden="true" />
           <div className="marquee-fade-right" aria-hidden="true" />
 
           <div className="marquee-track marquee-scroll-right">
             {[...clientsRow2, ...clientsRow2, ...clientsRow2].map((client, index) => (
-              <div key={`row2-${index}`} className="client-logo-item">
+              <div key={`row2-${index}`} className="client-logo-item" title={client.name}>
                 <img
                   src={client.logo}
                   alt={`${client.name} Logo`}

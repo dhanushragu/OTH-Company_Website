@@ -88,10 +88,10 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: #D6B36A;
   background: rgba(214, 179, 106, 0.08);
@@ -106,11 +106,11 @@
 }
 
 .consultation-main-title {
-  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', serif;
-  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
-  font-weight: 850;
-  line-height: 1.18;
-  letter-spacing: -0.025em;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.85rem, 2.5vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   margin: 0;
   color: #F5F3ED;
 }
@@ -129,8 +129,8 @@
 }
 
 .consultation-subheading {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.08rem;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
   line-height: 1.68;
   color: #cbd5e1;
   max-width: 680px;
@@ -292,118 +292,75 @@
   border-color: #D6B36A;
 }
 
-/* Secondary Inner Border with Engraved Playing Card Aesthetics */
-.card-inner-ornate-border {
+/* Secondary Inner Container: Split into Top Image (46%) + Bottom Content (54%) */
+.card-inner-split-container {
   position: absolute;
-  inset: 12px;
+  inset: 10px;
   border-radius: 12px;
-  border: 1px solid rgba(214, 179, 106, 0.2);
-  padding: 1.4rem 1.25rem 1.25rem;
+  border: 1px solid rgba(214, 179, 106, 0.25);
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  background: radial-gradient(circle at center, rgba(14, 20, 36, 0.75) 0%, rgba(4, 6, 12, 0.95) 100%);
+  background: radial-gradient(circle at center, rgba(14, 20, 36, 0.85) 0%, rgba(4, 6, 12, 0.98) 100%);
   overflow: hidden;
   transition: border-color 0.35s ease;
 }
 
-.luxury-playing-card-outer:hover .card-inner-ornate-border {
-  border-color: rgba(214, 179, 106, 0.55);
+.luxury-playing-card-outer:hover .card-inner-split-container {
+  border-color: rgba(214, 179, 106, 0.65);
 }
 
-/* 4 Corner Pips / Indices */
-.card-corner-pip {
-  position: absolute;
-  font-family: 'Syne', serif;
-  font-size: 0.72rem;
-  font-weight: 800;
-  color: #D6B36A;
-  opacity: 0.85;
-  line-height: 1;
-}
-
-.card-corner-pip.top-left { top: 6px; left: 8px; }
-.card-corner-pip.top-right { top: 6px; right: 8px; font-family: 'Syne', monospace; }
-.card-corner-pip.bottom-left { bottom: 6px; left: 8px; font-family: 'Syne', monospace; transform: rotate(180deg); }
-.card-corner-pip.bottom-right { bottom: 6px; right: 8px; transform: rotate(180deg); }
-
-/* Card Top Head Row */
-.card-head-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* TOP HALF: Consultation Image */
+.card-back-image-half {
   position: relative;
-  z-index: 2;
-  margin-top: 0.3rem;
+  width: 100%;
+  height: 44%;
+  overflow: hidden;
+  background-color: #070a14;
+  border-bottom: 1px solid rgba(214, 179, 106, 0.2);
 }
 
-.card-index-pill {
-  font-family: 'Syne', monospace;
-  font-size: 0.65rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: #D6B36A;
-  background: rgba(214, 179, 106, 0.08);
-  border: 1px solid rgba(214, 179, 106, 0.25);
-  padding: 0.2rem 0.6rem;
-  border-radius: 9999px;
+.card-back-half-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.card-suit-icon {
-  font-size: 0.95rem;
-  color: #D6B36A;
-  text-shadow: 0 0 10px rgba(214, 179, 106, 0.5);
+.luxury-playing-card-outer:hover .card-back-half-img {
+  transform: scale(1.06);
 }
 
-/* Card Center: Geometric Ornamental Linework */
-.card-center-geometry {
+.card-back-img-scrim {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 140px;
-  height: 140px;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(4, 6, 12, 0.15) 0%,
+    rgba(4, 6, 12, 0.1) 40%,
+    rgba(4, 6, 12, 0.75) 100%
+  );
   pointer-events: none;
-  opacity: 0.18;
-  transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.luxury-playing-card-outer:hover .card-center-geometry {
-  opacity: 0.32;
-  transform: translate(-50%, -50%) scale(1.06);
-}
-
-.geometry-diamond {
+.card-back-pill {
   position: absolute;
-  inset: 20px;
-  border: 1px solid #D6B36A;
-  transform: rotate(45deg);
+  top: 10px;
+  left: 10px;
+  z-index: 2;
 }
 
-.geometry-circle {
-  position: absolute;
-  inset: 32px;
-  border-radius: 50%;
-  border: 1px dashed #D6B36A;
-}
-
-.geometry-axis {
-  position: absolute;
-  background: #D6B36A;
-}
-
-.geometry-axis.horizontal {
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 1px;
-}
-
-.geometry-axis.vertical {
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
+/* BOTTOM HALF: Text Content & Footer */
+.card-back-content-half {
+  position: relative;
+  width: 100%;
+  height: 56%;
+  padding: 1rem 1.15rem 0.95rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 /* Card Core Content */
@@ -412,15 +369,14 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin: 1.1rem 0 1.3rem;
+  gap: 0.45rem;
 }
 
 .card-service-title {
-  font-family: 'Cinzel', 'Syne', Georgia, serif;
-  font-size: 1.25rem;
-  font-weight: 750;
-  line-height: 1.28;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  line-height: 1.25;
   color: #D6B36A;
   margin: 0;
   letter-spacing: -0.015em;
@@ -432,10 +388,10 @@
 }
 
 .card-service-desc {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.85rem;
-  line-height: 1.65;
-  color: #F5F3ED;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #cbd5e1;
   margin: 0;
 }
 
@@ -446,15 +402,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 0.85rem;
-  border-top: 1px solid rgba(214, 179, 106, 0.15);
-  margin-bottom: 0.2rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(214, 179, 106, 0.18);
+  margin-bottom: 0.1rem;
 }
 
 .cue-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 750;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #D6B36A;
@@ -462,11 +418,11 @@
 }
 
 .cue-arrow-badge {
-  width: 30px;
-  height: 30px;
+  width: 26px;
+  height: 26px;
   border-radius: 50%;
-  background: rgba(214, 179, 106, 0.08);
-  border: 1px solid rgba(214, 179, 106, 0.3);
+  background: rgba(214, 179, 106, 0.1);
+  border: 1px solid rgba(214, 179, 106, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -478,6 +434,7 @@
   background: #D6B36A;
   color: #04060C;
   border-color: #F5E5C0;
+}
   transform: translate(2px, -2px);
   box-shadow: 0 0 15px rgba(214, 179, 106, 0.45);
 }

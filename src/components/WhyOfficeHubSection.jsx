@@ -2,20 +2,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { 
   Sparkles, 
-  CheckCircle2, 
-  Workflow, 
-  ArrowUpRight, 
   RotateCcw,
-  Layers,
-  Award,
-  ShieldCheck,
   ArrowRight
 } from 'lucide-react';
 import './WhyOfficeHubSection.css';
 
 // Centralized editable content data structure
 export const whyOfficeHubData = {
-  eyebrow: 'ZOHO CONSULTING EXCELLENCE',
+  eyebrow: 'WHY CHOOSE US',
   introImage: '/YOfficeHub/Y office Hub.png',
   heading: 'Why Office Hub Tech?',
   reasons: [
@@ -23,46 +17,25 @@ export const whyOfficeHubData = {
       id: 'expertise-in-zoho',
       number: '01',
       title: 'Expertise in Zoho Solutions',
-      tag: 'ZOHO ECOSYSTEM MASTERY',
-      description:
-        'Deep understanding and experience in customizing and deploying Zoho products to meet specific business needs.',
-      deliverables: [
-        'Custom Deluge scripting & automated triggers',
-        'Multi-app sync across CRM, Books, Creator & Desk',
-        'Zero-latency process optimization'
-      ],
-      metric: '100% Customized',
-      icon: Layers
+      emoji: '💎',
+      shortDescription:
+        'Tailored Zoho implementations and custom Deluge workflows engineered to streamline your unique business operations.',
     },
     {
       id: 'comprehensive-service-range',
       number: '02',
       title: 'Comprehensive Service Range',
-      tag: 'FULL-SPECTRUM REACH',
-      description:
-        'From CRM to ERP solutions, we provide a wide array of services to support various business operations.',
-      deliverables: [
-        'Turnkey CRM & ERP enterprise deployment',
-        'Legacy system migration & data validation',
-        'Omnichannel customer service & accounting sync'
-      ],
-      metric: 'End-to-End Solutions',
-      icon: Sparkles
+      emoji: '👥',
+      shortDescription:
+        'End-to-end consulting spanning CRM, finance, ERP, and seamless integrations across your entire enterprise.',
     },
     {
       id: 'zoho-certified-expertise',
       number: '03',
       title: 'Zoho Certified Expertise',
-      tag: 'AUTHORIZED PARTNER',
-      description:
-        'As Zoho Certified Consultants, Office Hub Tech boosts your business with expert Zoho solutions, ensuring efficiency and growth.',
-      deliverables: [
-        'Certified Zoho Consultant methodologies',
-        'Enterprise security governance & compliance',
-        'Executive dashboards & continuous optimization'
-      ],
-      metric: 'Certified Consultants',
-      icon: Award
+      emoji: '⭐',
+      shortDescription:
+        'Authorized certified consultants delivering secure, scalable, and high-performance Zoho architectures that accelerate growth.',
     }
   ]
 };
@@ -74,7 +47,7 @@ export default function WhyOfficeHubSection() {
   const autoTransitionTimerRef = useRef(null);
   const introMountedTimeRef = useRef(0);
 
-  // Accurate detection: only trigger when at least 45% of the section is visible in the viewport
+  // Trigger when at least 45% of the section is visible in the viewport
   const isInView = useInView(sectionRef, { amount: 0.45, once: true });
 
   // Transition to Reasons
@@ -106,7 +79,6 @@ export default function WhyOfficeHubSection() {
 
     introMountedTimeRef.current = Date.now();
 
-    // Comfortable, elegant reading time: 4.5s total (1.1s entrance + 3.4s rest)
     autoTransitionTimerRef.current = setTimeout(() => {
       setCurrentStep('reasons');
     }, 4500);
@@ -118,14 +90,12 @@ export default function WhyOfficeHubSection() {
     };
   }, [isInView, currentStep]);
 
-  // Wheel listener: ONLY active when the user is ACTUALLY inside the section
-  // and has had at least 1.8 seconds to see the intro
+  // Wheel listener: user can skip after 1.8s by scrolling down
   useEffect(() => {
     if (currentStep !== 'intro' || !isInView) return;
 
     const handleWheel = (e) => {
       const elapsed = Date.now() - introMountedTimeRef.current;
-      // Prevent premature skip: user must have seen intro for at least 1.8s
       if (elapsed > 1800 && e.deltaY > 25) {
         showReasons();
       }
@@ -210,8 +180,8 @@ export default function WhyOfficeHubSection() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.15
+        staggerChildren: 0.18,
+        delayChildren: 0.1
       }
     }
   };
@@ -219,23 +189,27 @@ export default function WhyOfficeHubSection() {
   const reasonCardVariants = {
     hidden: {
       opacity: 0,
-      y: 40,
-      filter: 'blur(8px)'
+      y: 35,
+      filter: 'blur(6px)'
     },
     visible: {
       opacity: 1,
       y: 0,
       filter: 'blur(0px)',
       transition: {
-        duration: 0.85,
+        duration: 0.75,
         ease: [0.16, 1, 0.3, 1]
       }
     }
   };
 
   return (
-    <section className="why-section" id="why-us" ref={sectionRef}>
-      {/* Ambient background glows */}
+    <section 
+      className={`why-section ${currentStep === 'reasons' ? 'is-reasons' : 'is-intro'}`} 
+      id="why-us" 
+      ref={sectionRef}
+    >
+      {/* Ambient background glows (shown only during dark intro stage) */}
       <div className="why-ambient-glow glow-top-left" aria-hidden="true" />
       <div className="why-ambient-glow glow-bottom-right" aria-hidden="true" />
       <div className="why-grid-mesh" aria-hidden="true" />
@@ -245,8 +219,7 @@ export default function WhyOfficeHubSection() {
           {/* =================================================================
               STEP 1: INTRO (First time entering section)
               Shows ONLY "Why Office Hub Tech?" heading with the image.
-              NO description or extra text!
-              Proper speed, pauses 4.5s, then automatically moves & disappears.
+              UNCHANGED before animation completion!
               ================================================================= */}
           {currentStep === 'intro' ? (
             <motion.div
@@ -258,7 +231,7 @@ export default function WhyOfficeHubSection() {
               transition={{ duration: 0.5 }}
             >
               <div className="why-intro-content-row">
-                {/* Image using ServicesSection portrait card style */}
+                {/* Intro Portrait Image Card */}
                 <motion.div
                   variants={introImageVariants}
                   initial="enter"
@@ -288,7 +261,7 @@ export default function WhyOfficeHubSection() {
                   </div>
                 </motion.div>
 
-                {/* ONLY "Why Office Hub Tech?" heading (NO description) */}
+                {/* ONLY "Why Office Hub Tech?" heading */}
                 <motion.div
                   variants={introHeadingVariants}
                   initial="enter"
@@ -298,7 +271,7 @@ export default function WhyOfficeHubSection() {
                 >
                   <div className="why-eyebrow-pill">
                     <Sparkles size={14} className="eyebrow-gold-sparkle" />
-                    <span>{whyOfficeHubData.eyebrow}</span>
+                    <span>ZOHO CONSULTING EXCELLENCE</span>
                   </div>
 
                   <h2 className="why-pure-intro-title">
@@ -306,7 +279,7 @@ export default function WhyOfficeHubSection() {
                     <span className="title-gold-gradient">Office Hub Tech?</span>
                   </h2>
 
-                  {/* Smooth countdown progress bar & skip button */}
+                  {/* Smooth countdown progress bar & explore button */}
                   <div className="why-intro-footer-cue">
                     <button
                       type="button"
@@ -327,111 +300,67 @@ export default function WhyOfficeHubSection() {
             </motion.div>
           ) : (
             /* =================================================================
-               STEP 2: ALL THREE REASONS WITH "Why Office Hub Tech?" HEADING
-               The image and initial intro have disappeared.
-               Heading is prominently at the top.
-               All three reasons are shown together in ServicesSection style.
+               STEP 2: POST-ANIMATION REASONS STAGE
+               Styled directly like reference image (Elite Moments):
+               - Light ivory/beige palette
+               - Editorial serif typography
+               - Soft white rounded cards with independent emoji/logos
+               - Clean ~14 word concise descriptions
+               - Single view frame (no scrolling needed)
                ================================================================= */
             <motion.div
               key="why-step-reasons"
               className="why-reasons-overview-stage"
-              initial={{ opacity: 0, y: 35 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -25 }}
+              exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
             >
-              {/* Main Heading at Top: "Why Office Hub Tech?" */}
-              <div className="why-header">
-                <div className="why-eyebrow-pill">
-                  <Sparkles size={14} className="eyebrow-gold-sparkle" />
-                  <span>{whyOfficeHubData.eyebrow}</span>
-                </div>
-
-                <h2 className="why-main-title">
-                  <span className="title-lead">Why</span>{' '}
-                  <span className="title-gold-gradient">Office Hub Tech?</span>
-                </h2>
-
-                <div className="why-gold-line-divider" aria-hidden="true">
-                  <span className="divider-sparkle-gem" />
-                </div>
+              {/* Header matching reference image */}
+              <div className="why-ref-header">
+                <span className="why-ref-eyebrow">{whyOfficeHubData.eyebrow}</span>
+                <h2 className="why-ref-heading">{whyOfficeHubData.heading}</h2>
               </div>
 
-              {/* ALL THREE REASONS DISPLAYED TOGETHER (ServicesSection style) */}
+              {/* Three Cards Grid */}
               <motion.div
                 className="why-three-reasons-grid"
                 variants={reasonsContainerVariants}
                 initial="hidden"
                 animate="visible"
               >
-                {whyOfficeHubData.reasons.map((reason) => {
-                  const Icon = reason.icon || Sparkles;
-                  return (
-                    <motion.div
-                      key={reason.id}
-                      className="why-reason-card"
-                      variants={reasonCardVariants}
-                      whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                    >
-                      {/* Top Bar with Number & Category Tag */}
-                      <div className="why-card-top-bar">
-                        <div className="why-card-number-badge">
-                          <span>{reason.number}</span>
-                        </div>
+                {whyOfficeHubData.reasons.map((reason) => (
+                  <motion.div
+                    key={reason.id}
+                    className="why-ref-card"
+                    variants={reasonCardVariants}
+                    whileHover={{ y: -6, transition: { duration: 0.25 } }}
+                  >
+                    {/* Circular Logo/Emoji Badge */}
+                    <div className="why-ref-icon-circle" aria-hidden="true">
+                      <span className="why-ref-emoji">{reason.emoji}</span>
+                    </div>
 
-                        <div className="why-card-tag-pill">
-                          <Icon size={12} className="tag-icon" />
-                          <span>{reason.tag}</span>
-                        </div>
-                      </div>
+                    {/* Editorial Serif Title */}
+                    <h3 className="why-ref-card-title">
+                      {reason.title}
+                    </h3>
 
-                      {/* Reason Title */}
-                      <h3 className="why-card-title">
-                        {reason.title}
-                      </h3>
-
-                      {/* Complete Reason Description */}
-                      <p className="why-card-description">
-                        {reason.description}
-                      </p>
-
-                      {/* Capabilities / Advantages Checklist (ServicesSection style) */}
-                      <ul className="why-card-checklist">
-                        {reason.deliverables.map((item, idx) => (
-                          <li key={idx} className="why-card-checklist-item">
-                            <CheckCircle2 size={15} className="check-gold-icon" />
-                            <span>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-
-                      {/* Card Footer with Credential Metric */}
-                      <div className="why-card-footer">
-                        <div className="why-card-metric-pill">
-                          <ShieldCheck size={14} className="metric-shield-icon" />
-                          <span>{reason.metric}</span>
-                        </div>
-
-                        <a href="#contact-us" className="why-card-inquire-link" aria-label={`Inquire about ${reason.title}`}>
-                          <span>Inquire</span>
-                          <ArrowUpRight size={14} className="link-arrow" />
-                        </a>
-                      </div>
-
-                      {/* Ambient Gold Border & Glow Overlay */}
-                      <div className="why-card-border-glow" aria-hidden="true" />
-                    </motion.div>
-                  );
-                })}
+                    {/* Concise 13-14 Words Description */}
+                    <p className="why-ref-card-description">
+                      {reason.shortDescription}
+                    </p>
+                  </motion.div>
+                ))}
               </motion.div>
 
-              {/* Replay Intro Button */}
-              <div className="why-replay-row">
+              {/* Replay Intro Cue */}
+              <div className="why-ref-replay-row">
                 <button
                   type="button"
                   onClick={replayIntro}
-                  className="why-replay-btn"
-                  aria-label="Replay intro image and question"
+                  className="why-ref-replay-btn"
+                  aria-label="Replay intro animation"
                 >
                   <RotateCcw size={13} />
                   <span>Replay Intro</span>

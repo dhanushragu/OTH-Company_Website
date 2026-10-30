@@ -65,47 +65,44 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.16em;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #fbbf24;
-  background: rgba(251, 191, 36, 0.1);
-  border: 1px solid rgba(251, 191, 36, 0.35);
-  padding: 0.35rem 1rem;
+  color: #D6B36A;
+  background: rgba(214, 179, 106, 0.08);
+  border: 1px solid rgba(214, 179, 106, 0.3);
+  padding: 0.28rem 0.95rem;
   border-radius: 9999px;
-  box-shadow: 0 0 15px rgba(251, 191, 36, 0.15);
 }
 
 .eyebrow-sparkle {
-  color: #fde047;
+  color: #D6B36A;
 }
 
 .clients-title {
-  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
-  font-weight: 850;
-  line-height: 1.18;
-  letter-spacing: -0.025em;
-  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.85rem, 2.5vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #F5F3ED;
   margin: 0;
 }
 
 .title-gold-gradient {
-  background: linear-gradient(135deg, #fffbeb 0%, #fde047 30%, #fbbf24 65%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #D6B36A;
+  font-weight: 700;
   display: inline-block;
-  filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.35));
 }
 
 .clients-subtitle {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.05rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
   line-height: 1.6;
-  color: #94a3b8;
+  color: #A3B0A8;
   max-width: 620px;
   margin: 0;
 }
@@ -150,7 +147,7 @@
   display: flex;
   align-items: center;
   width: max-content;
-  gap: 3.5rem;
+  gap: 1.75rem;
   will-change: transform;
 }
 
@@ -191,45 +188,49 @@
 }
 
 /* ==========================================================================
-   PURE LOGO ITEM - NO BACKGROUND CARDS, ORIGINAL COLOR & SHAPE
+   INDIVIDUAL CLIENT LOGO CARD - PURE WHITE BACKGROUND FOR EACH LOGO
    ========================================================================== */
 .client-logo-item {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: transparent !important;
-  border: none !important;
-  box-shadow: none !important;
-  border-radius: 0 !important;
-  padding: 0;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #ffffff !important;
+  border: 1.5px solid rgba(251, 191, 36, 0.22) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+  border-radius: 14px !important;
+  padding: 12px 22px !important;
+  height: 68px;
+  min-width: 175px;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.3s ease, 
+              box-shadow 0.3s ease;
 }
 
 .client-logo-item:hover {
-  transform: translateY(-4px) scale(1.08);
+  transform: translateY(-4px) scale(1.04);
+  border-color: #fbbf24 !important;
+  box-shadow: 
+    0 0 24px rgba(251, 191, 36, 0.55),
+    0 8px 24px rgba(0, 0, 0, 0.5) !important;
 }
 
-/* Image styling - original color & shape + luminous drop-shadow for dark text logos */
+/* Image styling - natural, crisp contrast on individual white background */
 .client-logo-img {
-  max-width: 190px;
-  max-height: 65px;
+  max-width: 145px;
+  max-height: 44px;
   width: auto;
   height: auto;
   object-fit: contain;
   display: block;
-  filter: 
-    drop-shadow(0 2px 8px rgba(0, 0, 0, 0.7))
-    drop-shadow(0 0 14px rgba(255, 255, 255, 0.22)) !important;
+  filter: none !important;
   opacity: 1 !important;
-  border-radius: 4px;
-  transition: transform 0.3s ease, filter 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .client-logo-item:hover .client-logo-img {
-  filter: 
-    drop-shadow(0 4px 12px rgba(0, 0, 0, 0.8))
-    drop-shadow(0 0 22px rgba(251, 191, 36, 0.4)) !important;
+  transform: scale(1.04);
 }
 
 /* ==========================================================================

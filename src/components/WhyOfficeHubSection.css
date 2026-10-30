@@ -1,25 +1,60 @@
 /* ==========================================================================
    OFFICEHUB TECH - "WHY OFFICE HUB TECH?" SECTION
-   - Step 1: Entering section shows ONLY "Why Office Hub Tech?" + Image
-   - Step 2: Automatically moves & disappears, then shows all 3 reasons with heading
+   - Step 1 (Intro): UNCHANGED dark stage with /YOfficeHub/Y office Hub.png & animation
+   - Step 2 (Reasons): Styled like reference image (Elite Moments):
+     * Clean ivory/light beige palette (#F8F6F0)
+     * Editorial serif typography ('Playfair Display', 'Cinzel', serif)
+     * Fits in single view frame (no scrolling needed)
+     * Soft white rounded cards with independent emojis/logos
+     * Concise ~14 word descriptions
    ========================================================================== */
 
 .why-section {
   position: relative;
   background-color: #04060C;
-  padding: 130px 2rem 150px;
+  min-height: calc(100vh - 72px);
+  max-height: 840px;
+  padding: 30px 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
   overflow: hidden;
   color: #f8fafc;
   border-top: 1px solid rgba(251, 191, 36, 0.15);
+  transition: background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.8s ease, padding 0.8s ease;
 }
 
-/* Background Atmosphere */
+/* Intro stage: perfectly framed in single view */
+.why-section.is-intro {
+  min-height: calc(100vh - 72px);
+  max-height: 840px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 2rem;
+}
+
+/* Post-animation completion state: light ivory/beige single view frame */
+.why-section.is-reasons {
+  background-color: #F8F6F0;
+  color: #111827;
+  padding: 40px 2rem 45px;
+  min-height: calc(100vh - 72px);
+  max-height: 840px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Background Atmosphere (Active during intro, smoothly hidden in reasons) */
 .why-ambient-glow {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
   z-index: 0;
   filter: blur(160px);
+  transition: opacity 0.8s ease;
 }
 
 .glow-top-left {
@@ -48,23 +83,30 @@
     linear-gradient(90deg, rgba(251, 191, 36, 0.018) 1px, transparent 1px);
   background-size: 68px 68px;
   opacity: 0.65;
+  transition: opacity 0.8s ease;
+}
+
+.why-section.is-reasons .why-ambient-glow,
+.why-section.is-reasons .why-grid-mesh {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .why-container {
   position: relative;
   z-index: 1;
-  max-width: 1260px;
+  max-width: 1240px;
+  width: 100%;
   margin: 0 auto;
 }
 
 /* ==========================================================================
    STEP 1: INTRO (First time entering the section)
    Shows ONLY "Why Office Hub Tech?" heading with the image.
-   NO description or extra text!
+   KEPT 100% UNCHANGED.
    ========================================================================== */
 .why-intro-stage {
   width: 100%;
-  min-height: 520px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,37 +114,38 @@
 
 .why-intro-content-row {
   display: grid;
-  grid-template-columns: minmax(360px, 440px) 1fr;
-  gap: 5rem;
+  grid-template-columns: minmax(260px, 320px) 1fr;
+  gap: 3.5rem;
   align-items: center;
   width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
-/* Portrait Card: 4:5 proportions (matching ServicesSection) */
 .why-intro-portrait-wrapper {
   position: relative;
   width: 100%;
-  max-width: 440px;
+  max-width: 320px;
   margin: 0 auto;
 }
 
 .why-intro-portrait-card {
   position: relative;
   width: 100%;
+  max-height: 440px;
   aspect-ratio: 482 / 663;
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
   background: #090d16;
   box-shadow: 
-    0 25px 60px rgba(0, 0, 0, 0.8),
-    0 0 45px rgba(251, 191, 36, 0.15);
+    0 20px 45px rgba(0, 0, 0, 0.8),
+    0 0 35px rgba(251, 191, 36, 0.15);
 }
 
 .why-intro-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
   display: block;
 }
 
@@ -110,191 +153,93 @@
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(4, 6, 12, 0.2) 50%,
-    rgba(4, 6, 12, 0.7) 100%
+    180deg,
+    rgba(9, 13, 22, 0) 40%,
+    rgba(9, 13, 22, 0.6) 80%,
+    rgba(9, 13, 22, 0.95) 100%
   );
   pointer-events: none;
 }
 
 .why-intro-floating-badge {
   position: absolute;
-  top: 22px;
-  right: 22px;
-  width: 50px;
-  height: 50px;
+  top: 16px;
+  right: 16px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: rgba(6, 9, 18, 0.88);
+  background: rgba(18, 23, 34, 0.85);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(251, 191, 36, 0.55);
+  border: 1px solid rgba(251, 191, 36, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 10;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), 0 0 16px rgba(251, 191, 36, 0.35);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
 .why-intro-badge-mark {
-  font-family: 'Syne', 'Cinzel', serif;
-  font-size: 1.35rem;
-  font-weight: 850;
+  font-size: 1.2rem;
+  font-weight: 800;
   color: #fbbf24;
 }
 
 .why-intro-badge-glow {
   position: absolute;
-  inset: -4px;
+  inset: -6px;
   border-radius: 50%;
-  border: 1px solid rgba(251, 191, 36, 0.3);
-  animation: badgePulse 2.8s infinite ease-in-out;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.3) 0%, transparent 70%);
+  z-index: -1;
+  animation: pulseGoldGlow 3s ease-in-out infinite;
 }
 
-@keyframes badgePulse {
+@keyframes pulseGoldGlow {
   0%, 100% { transform: scale(1); opacity: 0.6; }
-  50% { transform: scale(1.15); opacity: 0.15; }
+  50% { transform: scale(1.3); opacity: 1; }
 }
 
 .why-intro-gold-border {
   position: absolute;
   inset: 0;
-  border-radius: 24px;
-  border: 1.5px solid rgba(251, 191, 36, 0.35);
+  border-radius: 20px;
+  border: 1px solid rgba(251, 191, 36, 0.25);
   pointer-events: none;
-  box-shadow: inset 0 0 20px rgba(251, 191, 36, 0.1);
 }
 
-/* Pure Intro Heading Wrapper (ONLY the heading, NO description) */
 .why-intro-heading-wrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 1.5rem;
-}
-
-.why-pure-intro-title {
-  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', serif;
-  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
-  font-weight: 850;
-  line-height: 1.18;
-  letter-spacing: -0.025em;
-  color: #ffffff;
-  margin: 0;
-}
-
-/* Footer Cue with Skip Button & Progress Line */
-.why-intro-footer-cue {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.9rem;
-  margin-top: 0.5rem;
-}
-
-.why-skip-pill-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1.1rem;
-  border-radius: 9999px;
-  background: rgba(251, 191, 36, 0.08);
-  border: 1px solid rgba(251, 191, 36, 0.32);
-  color: #fbbf24;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 750;
-  cursor: pointer;
-  transition: all 0.25s ease;
-}
-
-.why-skip-pill-btn:hover {
-  background: #fbbf24;
-  color: #04060C;
-  border-color: #fbbf24;
-  box-shadow: 0 0 16px rgba(251, 191, 36, 0.45);
-}
-
-.cue-arrow {
-  transition: transform 0.25s ease;
-}
-
-.why-skip-pill-btn:hover .cue-arrow {
-  transform: translateX(3px);
-}
-
-/* Auto-Transition Progress Bar: 4.5s countdown */
-.why-auto-progress-bar {
-  width: 240px;
-  height: 3px;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-  position: relative;
-}
-
-.why-auto-progress-fill {
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #fbbf24, #fde047);
-  box-shadow: 0 0 10px #fbbf24;
-  animation: autoFillProgress 4.5s linear forwards;
-}
-
-@keyframes autoFillProgress {
-  from { width: 0%; }
-  to { width: 100%; }
-}
-
-/* ==========================================================================
-   STEP 2: ALL THREE REASONS WITH "Why Office Hub Tech?" HEADING
-   ========================================================================== */
-.why-reasons-overview-stage {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Header at "That Heading Place" (ServicesSection style) */
-.why-header {
-  text-align: center;
-  max-width: 860px;
-  margin: 0 auto 3.6rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 1.25rem;
 }
 
 .why-eyebrow-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: #fbbf24;
+  gap: 8px;
+  padding: 6px 18px;
   background: rgba(251, 191, 36, 0.08);
-  border: 1px solid rgba(251, 191, 36, 0.32);
-  padding: 0.4rem 1.15rem;
-  border-radius: 9999px;
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #fbbf24;
+  text-transform: uppercase;
   box-shadow: 0 0 20px rgba(251, 191, 36, 0.15);
 }
 
 .eyebrow-gold-sparkle {
-  color: #fde047;
+  color: #fbbf24;
 }
 
-.why-main-title {
-  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', serif;
-  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
-  font-weight: 850;
-  line-height: 1.18;
+.why-pure-intro-title {
+  font-size: clamp(2.3rem, 3.8vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
   letter-spacing: -0.025em;
-  margin: 0;
   color: #ffffff;
+  margin: 0;
 }
 
 .title-lead {
@@ -302,261 +247,223 @@
 }
 
 .title-gold-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #fbbf24 60%, #f59e0b 100%);
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
   -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.35));
 }
 
-.why-gold-line-divider {
-  position: relative;
+.why-intro-footer-cue {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.why-skip-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: rgba(251, 191, 36, 0.12);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  border-radius: 999px;
+  color: #fbbf24;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.why-skip-pill-btn:hover {
+  background: rgba(251, 191, 36, 0.22);
+  border-color: #fbbf24;
+  transform: translateX(4px);
+}
+
+.cue-arrow {
+  transition: transform 0.3s ease;
+}
+
+.why-skip-pill-btn:hover .cue-arrow {
+  transform: translateX(4px);
+}
+
+.why-auto-progress-bar {
   width: 140px;
-  height: 1.5px;
-  background: linear-gradient(90deg, transparent, #fbbf24, transparent);
-  margin-top: 0.3rem;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  overflow: hidden;
 }
 
-.divider-sparkle-gem {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) rotate(45deg);
-  width: 6px;
-  height: 6px;
-  background: #fbbf24;
-  box-shadow: 0 0 10px #fbbf24;
+.why-auto-progress-fill {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(90deg, #f59e0b, #fbbf24);
+  animation: introProgressFill 4.5s linear forwards;
+}
+
+@keyframes introProgressFill {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(0%); }
 }
 
 /* ==========================================================================
-   ALL THREE REASONS GRID (ServicesSection style cards)
+   STEP 2: POST-ANIMATION REASONS STAGE (MATCHING ELITE MOMENTS REFERENCE)
    ========================================================================== */
+
+.why-reasons-overview-stage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Header matching Reference Image */
+.why-ref-header {
+  margin-bottom: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.why-ref-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: #B8860B; /* Classic golden ochre tone */
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.why-ref-heading {
+  font-family: 'Playfair Display', 'Cinzel', 'Georgia', serif;
+  font-size: clamp(2.2rem, 3.5vw, 3.1rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: #111827; /* Deep near-black high-contrast text */
+  margin: 0;
+}
+
+/* 3 Reasons Cards Grid */
 .why-three-reasons-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-  align-items: stretch;
+  gap: 24px;
+  width: 100%;
+  max-width: 1140px;
+  margin: 0 auto;
 }
 
-.why-reason-card {
-  position: relative;
+/* Card matching Reference Image: Pure white, rounded 20px, soft shadow */
+.why-ref-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 40px 28px 42px;
   display: flex;
   flex-direction: column;
-  background: rgba(8, 12, 22, 0.72);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(251, 191, 36, 0.22);
-  border-radius: 24px;
-  padding: 2.2rem 2rem 2rem;
-  box-shadow: 
-    0 20px 50px rgba(0, 0, 0, 0.7),
-    0 0 30px rgba(251, 191, 36, 0.08);
-  transition: border-color 0.35s ease, box-shadow 0.35s ease;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  cursor: default;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-.why-reason-card:hover {
-  border-color: rgba(251, 191, 36, 0.55);
-  box-shadow: 
-    0 25px 60px rgba(0, 0, 0, 0.8),
-    0 0 40px rgba(251, 191, 36, 0.2);
+.why-ref-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
 }
 
-.why-card-top-bar {
+/* Circular Emoji / Logo Badge */
+.why-ref-icon-circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: #FAF0E4; /* Warm ivory/beige circle from reference image */
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.8rem;
-  margin-bottom: 1.4rem;
+  justify-content: center;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 12px rgba(184, 134, 11, 0.08);
+  transition: transform 0.3s ease;
 }
 
-.why-card-number-badge {
-  font-family: 'Syne', 'Cinzel', serif;
-  font-size: 1.25rem;
-  font-weight: 850;
-  color: #fbbf24;
-  background: rgba(251, 191, 36, 0.1);
-  border: 1px solid rgba(251, 191, 36, 0.3);
-  padding: 0.25rem 0.65rem;
-  border-radius: 10px;
+.why-ref-card:hover .why-ref-icon-circle {
+  transform: scale(1.1);
 }
 
-.why-card-tag-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.3rem 0.75rem;
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  color: #cbd5e1;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.68rem;
-  font-weight: 750;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+.why-ref-emoji {
+  font-size: 1.9rem;
+  line-height: 1;
+  display: inline-block;
 }
 
-.tag-icon {
-  color: #fbbf24;
-}
-
-.why-card-title {
-  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', serif;
+/* Editorial Serif Card Title matching Reference Image */
+.why-ref-card-title {
+  font-family: 'Playfair Display', 'Cinzel', 'Georgia', serif;
   font-size: 1.35rem;
-  font-weight: 800;
-  line-height: 1.3;
-  color: #ffffff;
-  margin: 0 0 0.95rem;
-  letter-spacing: -0.015em;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #111827;
+  margin: 0 0 14px;
+  letter-spacing: -0.01em;
 }
 
-.why-card-description {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+/* Concise ~14 words Description matching Reference Image */
+.why-ref-card-description {
+  font-family: 'Inter', sans-serif;
   font-size: 0.94rem;
-  line-height: 1.68;
-  color: #cbd5e1;
-  margin: 0 0 1.5rem;
+  line-height: 1.6;
+  color: #6b7280;
+  margin: 0;
+  max-width: 300px;
 }
 
-/* Deliverables Checklist */
-.why-card-checklist {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  flex-grow: 1; /* Pushes footer to bottom */
-}
-
-.why-card-checklist-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.86rem;
-  line-height: 1.48;
-  color: #e2e8f0;
-}
-
-.check-gold-icon {
-  color: #fbbf24;
-  margin-top: 2px;
-  flex-shrink: 0;
-}
-
-/* Card Footer */
-.why-card-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.8rem;
-  padding-top: 1.25rem;
-  border-top: 1px solid rgba(251, 191, 36, 0.15);
-}
-
-.why-card-metric-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.74rem;
-  font-weight: 750;
-  color: #fbbf24;
-}
-
-.metric-shield-icon {
-  color: #fde047;
-}
-
-.why-card-inquire-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 800;
-  color: #ffffff;
-  text-decoration: none;
-  padding: 0.35rem 0.8rem;
-  border-radius: 9999px;
-  background: rgba(251, 191, 36, 0.12);
-  border: 1px solid rgba(251, 191, 36, 0.35);
-  transition: all 0.25s ease;
-}
-
-.why-card-inquire-link:hover {
-  background: #fbbf24;
-  color: #04060C;
-  border-color: #fbbf24;
-  box-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
-}
-
-.link-arrow {
-  transition: transform 0.25s ease;
-}
-
-.why-card-inquire-link:hover .link-arrow {
-  transform: translate(2px, -2px);
-}
-
-.why-card-border-glow {
-  position: absolute;
-  inset: 0;
-  border-radius: 24px;
-  border: 1px solid rgba(251, 191, 36, 0.1);
-  pointer-events: none;
-}
-
-/* Replay Button */
-.why-replay-row {
+/* Replay Cue at bottom */
+.why-ref-replay-row {
+  margin-top: 2rem;
   display: flex;
   justify-content: center;
-  margin-top: 3rem;
 }
 
-.why-replay-btn {
+.why-ref-replay-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 1.15rem;
-  border-radius: 9999px;
-  background: transparent;
-  border: 1px dashed rgba(251, 191, 36, 0.3);
-  color: #94a3b8;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.74rem;
-  font-weight: 650;
+  gap: 7px;
+  padding: 7px 18px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 999px;
+  color: #6b7280;
+  font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
-.why-replay-btn:hover {
-  color: #fbbf24;
-  border-color: rgba(251, 191, 36, 0.6);
-  background: rgba(251, 191, 36, 0.05);
+.why-ref-replay-btn:hover {
+  background: #FAF0E4;
+  color: #B8860B;
+  border-color: rgba(184, 134, 11, 0.3);
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN (TABLET & MOBILE)
+   Responsive Breakpoints
    ========================================================================== */
-@media (max-width: 1080px) {
-  .why-three-reasons-grid {
-    grid-template-columns: 1fr;
-    max-width: 680px;
-    margin: 0 auto;
-  }
 
-  .why-intro-content-row {
-    grid-template-columns: minmax(300px, 360px) 1fr;
-    gap: 3.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .why-section {
-    padding: 80px 1.25rem 100px;
+@media (max-width: 1024px) {
+  .why-section,
+  .why-section.is-intro,
+  .why-section.is-reasons {
+    max-height: none;
+    min-height: auto;
+    padding: 60px 1.5rem;
   }
 
   .why-intro-content-row {
@@ -569,19 +476,30 @@
     align-items: center;
   }
 
-  .why-intro-portrait-wrapper {
-    max-width: 300px;
+  .why-three-reasons-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 
-  .why-pure-intro-title {
-    font-size: clamp(1.6rem, 5vw, 1.95rem);
+  .why-ref-card {
+    padding: 30px 20px 34px;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-section.is-reasons {
+    max-height: none;
+    min-height: auto;
+    padding: 60px 1.5rem;
   }
 
-  .why-main-title {
-    font-size: clamp(1.6rem, 5vw, 1.95rem);
+  .why-three-reasons-grid {
+    grid-template-columns: 1fr;
+    max-width: 440px;
+    gap: 20px;
   }
 
-  .why-reason-card {
-    padding: 1.8rem 1.4rem;
+  .why-ref-card {
+    padding: 32px 24px;
   }
 }

@@ -1,0 +1,503 @@
+/* ==========================================================================
+   OFFICE HUB TECH - COMPANY BENEFITS & SOLUTIONS SECTION
+   - Design: Sophisticated, cinematic software consulting aesthetic
+   - Palette: Obsidian black (#080B0A), Deep forest (#0B1712), Emerald (#10B981),
+              Champagne gold (#D6B36A), Warm ivory (#F5F3ED)
+   - Typography: Space Grotesk for headings, Inter for body/controls
+   - Layout: Desktop single-screen viewport fit (1366x768 target)
+   ========================================================================== */
+
+.benefits-section {
+  position: relative;
+  background-color: #080B0A;
+  min-height: calc(100vh - 72px);
+  height: calc(100vh - 72px);
+  max-height: 840px;
+  padding: 24px 2.5rem 18px;
+  overflow: hidden;
+  color: #F5F3ED;
+  border-top: 1px solid rgba(214, 179, 106, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+/* Background Atmosphere: Restrained deep forest & emerald glows */
+.benefits-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(140px);
+}
+
+.glow-benefits-left {
+  top: 10%;
+  left: 2%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
+}
+
+.glow-benefits-right {
+  bottom: 10%;
+  right: 2%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(214, 179, 106, 0.04) 0%, transparent 70%);
+}
+
+.benefits-grid-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(rgba(214, 179, 106, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(214, 179, 106, 0.015) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.45;
+}
+
+.benefits-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.4rem;
+  height: 100%;
+  max-height: calc(100vh - 100px);
+}
+
+/* ==========================================================================
+   SECTION HEADER (Clean, Restrained, Space Grotesk)
+   ========================================================================== */
+.benefits-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.benefits-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.24rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #10B981;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.benefits-pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #10B981;
+}
+
+.benefits-main-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.35rem, 1.85vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: #F5F3ED;
+  margin: 0;
+  text-align: center;
+}
+
+.benefits-main-title .title-lead {
+  color: #F5F3ED;
+}
+
+.benefits-main-title .title-gold-gradient {
+  color: #D6B36A;
+  font-weight: 700;
+  display: inline-block;
+}
+
+/* ==========================================================================
+   SHOWCASE ROW: 2-COLUMN BALANCED COMPOSITION
+   ========================================================================== */
+.benefits-showcase-row {
+  display: grid;
+  grid-template-columns: minmax(320px, 1.05fr) 1.25fr;
+  gap: 2.8rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* ==========================================================================
+   LEFT: REFINED RECTANGULAR IMAGE FRAME
+   ========================================================================== */
+.benefits-image-stage {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefits-image-frame {
+  position: relative;
+  width: 100%;
+  height: clamp(270px, 37vh, 335px);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #0B1712;
+  box-shadow: 
+    0 16px 36px -8px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(214, 179, 106, 0.15);
+}
+
+.benefits-image-wrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.benefits-cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Soft, natural gradient overlay preserving image clarity */
+.benefits-image-soft-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(8, 11, 10, 0.15) 60%,
+    rgba(8, 11, 10, 0.55) 100%
+  );
+  pointer-events: none;
+}
+
+/* Subtle Frame Outer Border */
+.benefits-frame-border {
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  border: 1px solid rgba(214, 179, 106, 0.2);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* Restrained Floating Status Badge */
+.benefits-floating-badge-wrap {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 4;
+}
+
+.benefits-floating-glass-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  background: rgba(8, 11, 10, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(214, 179, 106, 0.3);
+  color: #D6B36A;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.benefits-badge-icon {
+  color: #D6B36A;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   RIGHT: EDITORIAL CONTENT & 4-POINT NAVIGATOR
+   ========================================================================== */
+.benefits-content-stage {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.benefits-text-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.benefits-tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.22rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(214, 179, 106, 0.08);
+  border: 1px solid rgba(214, 179, 106, 0.25);
+  color: #D6B36A;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  width: fit-content;
+}
+
+.benefits-tag-accent {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #D6B36A;
+}
+
+.benefits-item-headline {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.15rem, 1.4vw, 1.35rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.015em;
+  color: #F5F3ED;
+  margin: 0;
+}
+
+.headline-index {
+  color: #D6B36A;
+  margin-right: 0.2rem;
+}
+
+.headline-title-text {
+  color: #F5F3ED;
+}
+
+/* 15-Word Supporting Description: Crisp Inter typography */
+.benefits-item-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 400;
+  line-height: 1.48;
+  color: #A3B0A8;
+  margin: 0;
+  max-width: 500px;
+}
+
+/* ==========================================================================
+   INTERACTIVE 4-POINT SELECTORS (Compact 2x2 Grid)
+   ========================================================================== */
+.benefits-points-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.55rem;
+  margin-top: 0.1rem;
+}
+
+.benefit-point-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.55rem 0.85rem;
+  border-radius: 10px;
+  background: #111C17;
+  border: 1px solid rgba(214, 179, 106, 0.15);
+  color: #A3B0A8;
+  font-family: 'Inter', sans-serif;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.25s ease;
+}
+
+.benefit-point-tab:hover {
+  background: rgba(17, 28, 23, 0.95);
+  border-color: rgba(214, 179, 106, 0.35);
+  color: #F5F3ED;
+  transform: translateY(-1px);
+}
+
+.benefit-point-tab.tab-active {
+  background: rgba(214, 179, 106, 0.1);
+  border-color: #D6B36A;
+  color: #F5F3ED;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+.tab-left-indicator {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.tab-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #D6B36A;
+}
+
+.tab-check-icon {
+  color: rgba(214, 179, 106, 0.35);
+  transition: color 0.25s ease;
+}
+
+.tab-check-icon.icon-active {
+  color: #10B981;
+}
+
+.tab-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: inherit;
+  line-height: 1.25;
+}
+
+/* ==========================================================================
+   ACTIONS & STEPPER CONTROLS
+   ========================================================================== */
+.benefits-actions-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(214, 179, 106, 0.12);
+  margin-top: 0.2rem;
+}
+
+.benefits-primary-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.62rem 1.35rem;
+  border-radius: 9999px;
+  background: #D6B36A;
+  color: #080B0A;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.benefits-primary-cta:hover {
+  background: #e0bf77;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(214, 179, 106, 0.25);
+}
+
+.benefits-primary-cta .cta-arrow {
+  transition: transform 0.25s ease;
+}
+
+.benefits-primary-cta:hover .cta-arrow {
+  transform: translate(2px, -2px);
+}
+
+.benefits-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.benefits-stepper-counter {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #A3B0A8;
+  letter-spacing: 0.08em;
+}
+
+.benefits-stepper-counter .counter-sep {
+  color: #4B5563;
+  margin: 0 0.15rem;
+}
+
+.benefits-arrow-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.benefits-arrow-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(214, 179, 106, 0.2);
+  color: #F5F3ED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.benefits-arrow-btn:hover {
+  background: #D6B36A;
+  color: #080B0A;
+  border-color: #D6B36A;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLET & MOBILE)
+   ========================================================================== */
+@media (max-width: 960px), (max-height: 620px) {
+  .benefits-section {
+    height: auto;
+    min-height: calc(100vh - 72px);
+    max-height: none;
+    overflow-y: visible;
+    padding: 70px 1.25rem 50px;
+    display: block;
+  }
+
+  .benefits-container {
+    height: auto;
+    max-height: none;
+    gap: 2rem;
+  }
+
+  .benefits-showcase-row {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .benefits-image-frame {
+    height: 280px;
+  }
+
+  .benefits-points-list {
+    grid-template-columns: 1fr;
+  }
+
+  .benefits-actions-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .benefits-primary-cta {
+    width: 100%;
+    justify-content: center;
+  }
+}

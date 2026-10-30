@@ -1,384 +1,341 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles, ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, ShieldCheck, Cpu } from 'lucide-react';
 import './Hero.css';
 
-const TOTAL_FRAMES = 200;
-
-// Format frame number to 4 digits: e.g. 1 -> "0001"
-const getFrameUrl = (frameIndex) => {
-  const paddedIndex = String(Math.min(TOTAL_FRAMES, Math.max(1, frameIndex))).padStart(4, '0');
-  return `/images/herosection-frames/frame_${paddedIndex}.png`;
-};
-
-// Slideshow titles data
+// Centralized hero slides configuration
 const heroSlides = [
   {
     id: 1,
-    tag: 'APPLIED ARTIFICIAL INTELLIGENCE',
-    titleLead: 'We build',
-    titleHighlight: 'custom AI Models',
+    slideNumber: '01',
+    categoryTag: 'APPLIED ARTIFICIAL INTELLIGENCE',
+    titleLead: 'We Build',
+    titleHighlight: 'Custom AI Models',
     titleSuffix: '',
-    desc: 'Proprietary machine learning pipelines & neural agents engineered for enterprise scale.',
-    accent: 'cyan'
+    desc: 'Proprietary machine learning pipelines and neural agents engineered for enterprise scale, data privacy, and intelligent decision-making.',
+    accent: 'gold',
+    badgeText: 'Enterprise AI Architecture',
+    badgeIcon: Cpu,
+    image: '/images/hero%20section%20images/hero%20img%201.png',
+    imageAlt: 'We Build Custom AI Models - Office Hub Tech Enterprise AI',
+    objectPosition: 'center 40%',
+    primaryCtaText: 'Explore AI Solutions',
+    primaryCtaLink: '#our-solutions',
+    secondaryCtaText: 'Schedule Consultation',
+    secondaryCtaLink: '#contact-us',
+    trustText: 'Certified Architecture • Enterprise AI Pipelines'
   },
   {
     id: 2,
-    tag: 'UNIFIED CLOUD ARCHITECTURE',
+    slideNumber: '02',
+    categoryTag: 'UNIFIED CLOUD ARCHITECTURE',
     titleLead: 'Custom',
-    titleHighlight: 'Zoho solutions',
-    titleSuffix: 'Tailored for you',
-    desc: 'Bespoke CRM ecosystems, Creator workflows, and zero-latency business automation.',
-    accent: 'gold'
+    titleHighlight: 'Zoho Solutions',
+    titleSuffix: 'Tailored for You',
+    desc: 'End-to-end CRM ecosystems, bespoke Zoho Creator applications, and zero-latency business process automation for modern enterprises.',
+    accent: 'gold',
+    badgeText: 'Certified Zoho Partner',
+    badgeIcon: ShieldCheck,
+    image: '/images/hero%20section%20images/hero%20img%202.jpg',
+    imageAlt: 'Custom Zoho Solutions Tailored for You - Office Hub Tech',
+    objectPosition: 'center center',
+    primaryCtaText: 'Explore Zoho Services',
+    primaryCtaLink: '#services',
+    secondaryCtaText: 'Book Strategy Call',
+    secondaryCtaLink: '#contact-us',
+    trustText: 'Ranked #1 Globally • 100% Custom Engineering'
   }
 ];
 
 export default function Hero() {
-  const containerRef = useRef(null);
-  const canvasRef = useRef(null);
-  const imagesRef = useRef(new Array(TOTAL_FRAMES + 1));
-  const currentFrameRef = useRef(1);
-  const targetFrameRef = useRef(1);
-  const animFrameIdRef = useRef(null);
-  const isReadyRef = useRef(false);
-  const [isReady, setIsReady] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const timerRef = useRef(null);
 
-  // Active slide index (0 or 1) - driven by both timer and scroll position
-  const [activeSlideIndex, setActiveSlideIndex] = useState(0);
-  const [showJumpPrompt, setShowJumpPrompt] = useState(false);
-  const [portalScale, setPortalScale] = useState(1);
-  const hasAutoJumpedRef = useRef(false);
-  const lastScrollYRef = useRef(0);
-
-  // Auto slideshow interval (every 5 seconds)
+  // Preload both images immediately to prevent any flicker during rotation
   useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveSlideIndex((prev) => (prev + 1) % heroSlides.length);
-    }, 5200);
-    return () => clearInterval(timer);
+    heroSlides.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.image;
+    });
   }, []);
 
-  // Smooth jump to the clients section below hero
-  const jumpToNextSection = () => {
-    const target = document.getElementById('clients') || document.getElementById('services');
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  // Render a specific image on 100% fullscreen canvas with high-DPI and bicubic 'high' smoothing
-  const renderFrame = (img) => {
-    const canvas = canvasRef.current;
-    if (!canvas || !img || !img.complete || img.naturalWidth === 0) return;
-
-    const ctx = canvas.getContext('2d', { alpha: false, desynchronized: true });
-    if (!ctx) return;
-
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
-
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const displayWidth = canvas.clientWidth;
-    const displayHeight = canvas.clientHeight;
-
-    const targetWidth = Math.round(displayWidth * dpr);
-    const targetHeight = Math.round(displayHeight * dpr);
-
-    if (canvas.width !== targetWidth || canvas.height !== targetHeight) {
-      canvas.width = targetWidth;
-      canvas.height = targetHeight;
-    }
-
-    ctx.save();
-    ctx.scale(dpr, dpr);
-
-    // Full 100% cover math: preserve aspect ratio, center image perfectly
-    const imgWidth = img.naturalWidth;
-    const imgHeight = img.naturalHeight;
-    const scale = Math.max(displayWidth / imgWidth, displayHeight / imgHeight);
-    const drawWidth = imgWidth * scale;
-    const drawHeight = imgHeight * scale;
-    const offsetX = (displayWidth - drawWidth) / 2;
-    const offsetY = (displayHeight - drawHeight) / 2;
-
-    ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
-    ctx.restore();
-  };
-
-  // Find closest available loaded image if target frame is still loading
-  const getRenderableImage = (targetIndex) => {
-    const images = imagesRef.current;
-    const rounded = Math.round(targetIndex);
-    if (images[rounded] && images[rounded].complete) {
-      return images[rounded];
-    }
-    for (let i = rounded - 1; i >= 1; i--) {
-      if (images[i] && images[i].complete) return images[i];
-    }
-    for (let i = rounded + 1; i <= TOTAL_FRAMES; i++) {
-      if (images[i] && images[i].complete) return images[i];
-    }
-    return null;
-  };
-
-  // Preload and decode all 200 frames asynchronously
+  // Automatic slide rotation every 5.5 seconds, pauses on hover
   useEffect(() => {
-    let isMounted = true;
+    if (isPaused) return;
 
-    const loadAndDecodeFrame = async (index) => {
-      return new Promise((resolve) => {
-        const img = new Image();
-        img.src = getFrameUrl(index);
-        
-        img.onload = async () => {
-          if (!isMounted) return resolve(null);
-          if ('decode' in img) {
-            try {
-              await img.decode();
-            } catch {}
-          }
-          if (isMounted) {
-            imagesRef.current[index] = img;
-          }
-          resolve(img);
-        };
-
-        img.onerror = () => resolve(null);
-      });
-    };
-
-    const preloadPipeline = async () => {
-      const frame1 = await loadAndDecodeFrame(1);
-      if (!isMounted) return;
-      if (frame1) {
-        renderFrame(frame1);
-      }
-
-      const initialBatch = [];
-      for (let i = 2; i <= 25; i++) {
-        initialBatch.push(loadAndDecodeFrame(i));
-      }
-      await Promise.all(initialBatch);
-      if (!isMounted) return;
-
-      isReadyRef.current = true;
-      setIsReady(true);
-
-      const CHUNK_SIZE = 12;
-      for (let i = 26; i <= TOTAL_FRAMES; i += CHUNK_SIZE) {
-        if (!isMounted) break;
-        const chunk = [];
-        for (let j = i; j < i + CHUNK_SIZE && j <= TOTAL_FRAMES; j++) {
-          chunk.push(loadAndDecodeFrame(j));
-        }
-        await Promise.all(chunk);
-      }
-    };
-
-    preloadPipeline();
+    timerRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroSlides.length);
+    }, 5500);
 
     return () => {
-      isMounted = false;
+      if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, []);
+  }, [isPaused]);
 
-  // High-frequency scroll listener tracking progress, slide sync & auto-jump
-  useEffect(() => {
-    const handleScroll = () => {
-      const container = containerRef.current;
-      if (!container) return;
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % heroSlides.length);
+  };
 
-      const rect = container.getBoundingClientRect();
-      const scrollDistance = container.offsetHeight - window.innerHeight;
-      
-      if (scrollDistance <= 0) return;
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
+  };
 
-      const progress = Math.max(0, Math.min(1, -rect.top / scrollDistance));
-      const target = 1 + progress * (TOTAL_FRAMES - 1);
-      targetFrameRef.current = target;
+  const handleJump = (idx) => {
+    setCurrentIndex(idx);
+  };
 
-      const currentScrollY = window.scrollY;
-      const isScrollingDown = currentScrollY > lastScrollYRef.current;
-      lastScrollYRef.current = currentScrollY;
+  const currentSlide = heroSlides[currentIndex];
+  const BadgeIcon = currentSlide.badgeIcon || Sparkles;
 
-      // Sync slideshow state based on scroll section
-      if (progress < 0.45) {
-        setActiveSlideIndex(0);
-      } else if (progress >= 0.45 && progress < 0.88) {
-        setActiveSlideIndex(1);
-      }
+  // Smooth clockwise rotation animation for images:
+  // Outgoing image rotates clockwise from 0° -> +18° while fading
+  // Incoming image enters from -18° rotating clockwise -> 0°
+  // Creating a seamless, elegant clock-sweep effect
+  const imageClockVariants = {
+    initial: {
+      rotate: -18,
+      scale: 1.08,
+      opacity: 0,
+    },
+    animate: {
+      rotate: 0,
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.95,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+    exit: {
+      rotate: 18,
+      scale: 0.96,
+      opacity: 0,
+      transition: {
+        duration: 0.65,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
 
-      // Show jump prompt when nearing the end (progress >= 0.88)
-      if (progress >= 0.88) {
-        setShowJumpPrompt(true);
-      } else {
-        setShowJumpPrompt(false);
-      }
+  // Synchronized text animation: incoming arrives from right (x: 50 -> 0), outgoing fades right (0 -> 30)
+  const textContainerVariants = {
+    initial: { opacity: 0 },
+    animate: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+    exit: {
+      opacity: 0,
+      x: 30,
+      transition: {
+        duration: 0.4,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
 
-      // Portal zoom warp animation (progress 0.90 -> 1.0)
-      if (progress > 0.90) {
-        const factor = (progress - 0.90) / 0.10;
-        setPortalScale(1 + factor * 0.08);
-      } else {
-        setPortalScale(1);
-      }
-
-      // Auto-jump to the next section at the very end (progress >= 0.985)
-      if (progress >= 0.985 && !hasAutoJumpedRef.current && isScrollingDown) {
-        hasAutoJumpedRef.current = true;
-        jumpToNextSection();
-      }
-
-      // Reset auto-jump flag when user scrolls back up
-      if (progress < 0.82) {
-        hasAutoJumpedRef.current = false;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Resize listener
-  useEffect(() => {
-    const handleResize = () => {
-      const img = getRenderableImage(currentFrameRef.current);
-      if (img) renderFrame(img);
-    };
-
-    window.addEventListener('resize', handleResize, { passive: true });
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // 60fps / 120fps continuous animation loop
-  useEffect(() => {
-    let lastRenderedFrame = -1;
-
-    const tick = () => {
-      const target = targetFrameRef.current;
-      const current = currentFrameRef.current;
-      const diff = target - current;
-
-      if (Math.abs(diff) > 0.005) {
-        currentFrameRef.current += diff * 0.12;
-        const activeFrame = Math.round(currentFrameRef.current);
-
-        if (activeFrame !== lastRenderedFrame) {
-          const img = getRenderableImage(activeFrame);
-          if (img) {
-            renderFrame(img);
-            lastRenderedFrame = activeFrame;
-          }
-        }
-      }
-
-      animFrameIdRef.current = requestAnimationFrame(tick);
-    };
-
-    animFrameIdRef.current = requestAnimationFrame(tick);
-    return () => {
-      if (animFrameIdRef.current) {
-        cancelAnimationFrame(animFrameIdRef.current);
-      }
-    };
-  }, []);
-
-  const currentSlide = heroSlides[activeSlideIndex];
+  const textItemVariants = {
+    initial: {
+      opacity: 0,
+      x: 50,
+      filter: 'blur(6px)',
+    },
+    animate: {
+      opacity: 1,
+      x: 0,
+      filter: 'blur(0px)',
+      transition: {
+        duration: 0.75,
+        ease: [0.22, 1, 0.36, 1],
+      },
+    },
+  };
 
   return (
-    <section className="hero-scroll-track" ref={containerRef} id="home">
-      {/* 100% Fullscreen Sticky Viewport */}
-      <div className="hero-sticky-viewport">
-        {/* =================================================================
-            100% FULLSCREEN CANVAS (VIDEOS/FRAMES FILL 100% OF THE SPACE)
-            ================================================================= */}
-        <div 
-          className="hero-canvas-portal-wrapper"
-          style={{ transform: `scale(${portalScale})` }}
-        >
-          <canvas ref={canvasRef} className="hero-frame-canvas" />
-        </div>
+    <section 
+      className="hero-section" 
+      id="home"
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      aria-label="Office Hub Tech Hero Showcase"
+    >
+      {/* Ambient background glows & fine mesh */}
+      <div className="hero-ambient-glow glow-top-left" aria-hidden="true" />
+      <div className="hero-ambient-glow glow-bottom-right" aria-hidden="true" />
+      <div className="hero-grid-mesh" aria-hidden="true" />
 
-        {/* =================================================================
-            LEFT-ALIGNED TRANSPARENT SLIDESHOW TITLES (NO BACKGROUND)
-            Rendered DIRECTLY on top of the scrolling video frames
-            ================================================================= */}
-        <div className={`hero-overlay-slideshow-container ${showJumpPrompt ? 'fade-for-jump' : ''}`}>
-          {/* Slide Navigation Stepper Indicator */}
-          <div className="hero-slide-stepper">
-            {heroSlides.map((slide, idx) => (
-              <button
-                key={slide.id}
-                type="button"
-                aria-label={`Go to slide ${idx + 1}`}
-                className={`slide-step-bar ${activeSlideIndex === idx ? 'active' : ''} bar-${slide.accent}`}
-                onClick={() => setActiveSlideIndex(idx)}
-              />
-            ))}
-            <span className="slide-counter-badge">
-              0{activeSlideIndex + 1} / 0{heroSlides.length}
-            </span>
+      {/* SVG Clip Path Definition for the Curved Arc Boundary */}
+      <svg className="hero-svg-defs" width="0" height="0" aria-hidden="true">
+        <defs>
+          <clipPath id="heroCurvedArcClip" clipPathUnits="objectBoundingBox">
+            {/* 
+              Smooth, oversized clock-like convex arc on the right:
+              Starts at (0,0), spans to (0.86, 0), curves smoothly out to (1.0, 0.5) at the center,
+              and returns to (0.86, 1) at the bottom, then back to (0,1).
+            */}
+            <path d="M 0,0 L 0.86,0 C 0.96,0.18 1.0,0.36 1.0,0.5 C 1.0,0.64 0.96,0.82 0.86,1 L 0,1 Z" />
+          </clipPath>
+        </defs>
+      </svg>
+
+      <div className="hero-wrapper">
+        <div className="hero-split-grid">
+
+          {/* =================================================================
+              LEFT SIDE: LARGE CURVED IMAGE CAROUSEL (55–60% WIDTH)
+              Clock-like rotation animation + oversized curved arc mask
+              ================================================================= */}
+          <div className="hero-image-stage">
+            <div className="hero-curved-frame-mask">
+              <AnimatePresence mode="popLayout">
+                <motion.div
+                  key={`hero-img-${currentSlide.id}`}
+                  className="hero-rotating-image-canvas"
+                  variants={imageClockVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                >
+                  <img
+                    src={currentSlide.image}
+                    alt={currentSlide.imageAlt}
+                    className="hero-covered-image"
+                    style={{ objectPosition: currentSlide.objectPosition }}
+                    loading="eager"
+                  />
+                  {/* Subtle black vignette overlay blending image seamlessly into dark canvas */}
+                  <div className="hero-image-cinematic-scrim" />
+                </motion.div>
+              </AnimatePresence>
+
+              {/* Decorative Clock-Like Curved Arc Ring & Dial Accents */}
+              <div className="hero-clock-arc-border" aria-hidden="true">
+                <div className="hero-arc-glow-stroke" />
+                {/* Clock Dial Tick Markers */}
+                <div className="hero-clock-ticks-group">
+                  <span className="clock-tick tick-1" />
+                  <span className="clock-tick tick-2" />
+                  <span className="clock-tick tick-3" />
+                  <span className="clock-tick tick-4" />
+                  <span className="clock-tick tick-5" />
+                </div>
+              </div>
+
+              {/* Floating Luxury Status Badge on the Image */}
+              <div className="hero-floating-badge-wrap">
+                <div className="hero-floating-glass-badge">
+                  <BadgeIcon size={15} className="hero-badge-icon" />
+                  <span>{currentSlide.badgeText}</span>
+                </div>
+              </div>
+
+              {/* Slide Number Monogram Watermark on Image Side */}
+              <div className="hero-watermark-number" aria-hidden="true">
+                {currentSlide.slideNumber}
+              </div>
+            </div>
           </div>
 
-          {/* Slideshow Title Content (Completely Transparent, No Card/Box) */}
-          <div key={currentSlide.id} className="hero-slide-content slide-fade-in">
-            <div className="slide-category-pill">
-              <span className={`slide-dot dot-${currentSlide.accent}`} />
-              <span>{currentSlide.tag}</span>
-            </div>
+          {/* =================================================================
+              RIGHT SIDE: TEXT CONTENT (40–45% WIDTH)
+              Synchronized right-to-left entrance, pure black & gold brand styling
+              ================================================================= */}
+          <div className="hero-content-stage">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`hero-text-${currentSlide.id}`}
+                className="hero-text-flow"
+                variants={textContainerVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+              >
+                {/* Eyebrow Pill Tag */}
+                <motion.div variants={textItemVariants} className="hero-eyebrow-pill">
+                  <span className="hero-pill-bullet" />
+                  <span className="hero-pill-label">{currentSlide.categoryTag}</span>
+                </motion.div>
 
-            <h1 className="hero-left-title">
-              {currentSlide.titleLead}{' '}
-              <span className={`stylish-highlight highlight-${currentSlide.accent}`}>
-                {currentSlide.titleHighlight}
-              </span>{' '}
-              {currentSlide.titleSuffix && (
-                <span className="stylish-script-suffix">
-                  {currentSlide.titleSuffix}
+                {/* Main Headline */}
+                <motion.h1 variants={textItemVariants} className="hero-main-heading">
+                  <span className="hero-heading-lead">{currentSlide.titleLead}</span>{' '}
+                  <span className="hero-heading-gold">{currentSlide.titleHighlight}</span>
+                  {currentSlide.titleSuffix && (
+                    <span className="hero-heading-suffix"> {currentSlide.titleSuffix}</span>
+                  )}
+                </motion.h1>
+
+                {/* Sub-description */}
+                <motion.p variants={textItemVariants} className="hero-supporting-desc">
+                  {currentSlide.desc}
+                </motion.p>
+
+                {/* CTA Action Buttons */}
+                <motion.div variants={textItemVariants} className="hero-actions-cluster">
+                  <a href={currentSlide.primaryCtaLink} className="hero-cta-gold-btn">
+                    <span>{currentSlide.primaryCtaText}</span>
+                    <ArrowUpRight size={17} className="cta-arrow" />
+                  </a>
+
+                  <a href={currentSlide.secondaryCtaLink} className="hero-cta-outline-btn">
+                    <span>{currentSlide.secondaryCtaText}</span>
+                    <ArrowRight size={15} />
+                  </a>
+                </motion.div>
+
+                {/* Trust Verification Tag */}
+                <motion.div variants={textItemVariants} className="hero-trust-badge-row">
+                  <Sparkles size={14} className="hero-trust-sparkle" />
+                  <span>{currentSlide.trustText}</span>
+                </motion.div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Bottom Controls Bar: Clock Stepper & Navigation Arrows */}
+            <div className="hero-stepper-control-row">
+              <div className="hero-stepper-bars">
+                {heroSlides.map((slide, idx) => (
+                  <button
+                    key={slide.id}
+                    type="button"
+                    className={`hero-stepper-pill ${currentIndex === idx ? 'active' : ''}`}
+                    onClick={() => handleJump(idx)}
+                    aria-label={`Jump to slide ${idx + 1}`}
+                  >
+                    <span className="stepper-fill" />
+                  </button>
+                ))}
+                <span className="hero-stepper-counter">
+                  0{currentIndex + 1} <span className="counter-slash">/</span> 0{heroSlides.length}
                 </span>
-              )}
-            </h1>
+              </div>
 
-            <p className="hero-left-desc">{currentSlide.desc}</p>
-          </div>
-        </div>
-
-        {/* Ambient bottom gradient so jump prompt pops out */}
-        <div className={`hero-portal-vignette ${showJumpPrompt ? 'active' : ''}`} aria-hidden="true" />
-
-        {/* JUMP ANIMATION CARD (Triggered at end of animation) */}
-        <div 
-          className={`hero-jump-portal ${showJumpPrompt ? 'visible' : ''}`}
-          onClick={jumpToNextSection}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => { if (e.key === 'Enter') jumpToNextSection(); }}
-          aria-label="Jump to Our Clients Section"
-        >
-          <div className="hero-jump-pill">
-            <span className="jump-pulse-sparkle">✦</span>
-            <span>TRUSTED ENTERPRISE NETWORK</span>
-            <span className="jump-pulse-ring" />
-          </div>
-
-          <div className="hero-jump-cta">
-            <span className="jump-cta-text">Explore Our Clients</span>
-            <div className="jump-arrow-circle">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <line x1="12" y1="5" x2="12" y2="19"></line>
-                <polyline points="19 12 12 19 5 12"></polyline>
-              </svg>
+              <div className="hero-nav-arrow-btns">
+                <button
+                  type="button"
+                  className="hero-arrow-circle-btn"
+                  onClick={handlePrev}
+                  aria-label="Previous Slide"
+                >
+                  <ChevronLeft size={18} />
+                </button>
+                <button
+                  type="button"
+                  className="hero-arrow-circle-btn"
+                  onClick={handleNext}
+                  aria-label="Next Slide"
+                >
+                  <ChevronRight size={18} />
+                </button>
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Minimal loading indicator while initial frames buffer */}
-        {!isReady && (
-          <div className="hero-loading-pill">
-            <span className="pill-spinner" />
-            <span>Buffering HD Motion...</span>
-          </div>
-        )}
+        </div>
       </div>
     </section>
   );

@@ -1,0 +1,695 @@
+/* ==========================================================================
+   OFFICEHUB TECH - PREMIUM FOOTER COMPONENT
+   - Palette: Pure Bright Black (#000000 / #04070D) & Pure Bright Gold (#FFD700)
+   - Layout: Top Brand Hero Banner -> 4-Col Navigation Matrix -> Badges -> Legal & Copyright
+   - Animations: Floating Recognition Badges & Radiant Gold Glow Effects
+   ========================================================================== */
+
+.footer-master-root {
+  position: relative;
+  /* Distinctive Deep Midnight Sapphire-Black background contrasting cleanly with prior sections */
+  background: linear-gradient(180deg, #031427 0%, #010c1a 60%, #010710 100%);
+  color: #f1f5f9;
+  padding: 85px 2rem 40px;
+  overflow: hidden;
+  border-top: 3px solid #FFD700; /* Pure bright gold divider */
+  box-shadow: 0 -12px 45px rgba(255, 215, 0, 0.12);
+  font-family: inherit;
+}
+
+/* Background Atmosphere */
+.footer-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(150px);
+  z-index: 0;
+}
+
+.glow-gold-top {
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 750px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+}
+
+.glow-gold-bottom {
+  bottom: -60px;
+  right: 10%;
+  width: 500px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.06) 0%, transparent 70%);
+}
+
+.footer-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(rgba(255, 215, 0, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.015) 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.footer-main-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   1. TOP HERO BANNER: LOGO + MISSION HEADING + NEWSLETTER
+   ========================================================================== */
+
+.footer-top-hero-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 2.5rem;
+  align-items: center;
+  padding: 34px 38px;
+  background: rgba(4, 20, 39, 0.75);
+  border: 1px solid rgba(255, 215, 0, 0.32);
+  border-radius: 20px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(255, 215, 0, 0.08);
+  margin-bottom: 60px;
+  transition: border-color 0.3s ease;
+}
+
+.footer-top-hero-card:hover {
+  border-color: rgba(255, 215, 0, 0.45);
+}
+
+/* Company Logo Container */
+.footer-brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  padding: 12px 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.footer-brand-logo-wrap:hover {
+  transform: translateY(-2px);
+  border-color: #FFD700;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+}
+
+.footer-logo-link {
+  display: inline-block;
+}
+
+.footer-brand-logo-img {
+  height: 52px;
+  width: auto;
+  max-width: 190px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Center Content */
+.footer-hero-center-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-eyebrow-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #FFD700; /* Pure bright gold */
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.chip-sparkle {
+  color: #FFD700;
+}
+
+.footer-hero-heading {
+  font-family: 'Playfair Display', 'Cinzel', 'Georgia', serif;
+  font-size: clamp(1.4rem, 2.2vw, 1.85rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.25;
+  margin: 0 0 6px;
+}
+
+.gold-highlight-text {
+  color: #FFD700;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.footer-hero-subtext {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: #cbd5e1;
+  margin: 0;
+  max-width: 540px;
+}
+
+/* Newsletter Subscription Input */
+.footer-newsletter-wrap {
+  position: relative;
+  min-width: 330px;
+}
+
+.footer-newsletter-form {
+  display: flex;
+  align-items: center;
+  background: rgba(4, 7, 13, 0.95);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-radius: 999px;
+  padding: 4px 5px 4px 18px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-newsletter-form:focus-within {
+  border-color: #FFD700;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.4);
+}
+
+.footer-email-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  min-width: 0;
+}
+
+.footer-email-input::placeholder {
+  color: #94a3b8;
+  font-size: 0.84rem;
+}
+
+.footer-newsletter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #FFD700 0%, #F59E0B 100%);
+  color: #04070d;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 9px 20px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  white-space: nowrap;
+}
+
+.footer-newsletter-btn:hover {
+  transform: translateX(2px);
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.6);
+}
+
+.newsletter-success-note {
+  position: absolute;
+  top: 100%;
+  left: 12px;
+  margin-top: 6px;
+  font-size: 0.76rem;
+  color: #FFD700;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   2. FOUR-COLUMN NAVIGATION MATRIX
+   ========================================================================== */
+
+.footer-columns-matrix {
+  display: grid;
+  grid-template-columns: 1.1fr 1.1fr 1.35fr 1.35fr;
+  gap: 3rem;
+  padding-bottom: 55px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.18);
+  margin-bottom: 50px;
+}
+
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-col-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'Playfair Display', 'Cinzel', 'Georgia', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #FFD700; /* Pure bright gold */
+  margin: 0 0 1.25rem;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+  letter-spacing: -0.01em;
+}
+
+.title-bullet {
+  font-size: 0.8rem;
+  color: #FFD700;
+}
+
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #cbd5e1;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1.4;
+}
+
+.hover-chevron {
+  color: #FFD700;
+  font-weight: 700;
+  opacity: 0.4;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.footer-anchor:hover {
+  color: #ffffff;
+  transform: translateX(4px);
+}
+
+.footer-anchor:hover .hover-chevron {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+/* Contact Column Cards */
+.footer-contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-contact-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.contact-icon-bubble {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 215, 0, 0.12);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  color: #FFD700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.15);
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.footer-contact-card:hover .contact-icon-bubble {
+  transform: scale(1.1);
+  background: #FFD700;
+  color: #04070d;
+}
+
+.contact-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.contact-value {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  line-height: 1.45;
+  transition: color 0.25s ease;
+}
+
+.contact-value:hover {
+  color: #FFD700;
+}
+
+/* Social Presence */
+.footer-social-row {
+  margin-top: 10px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 215, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-lead-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #FFD700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.social-icons-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.social-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  color: #f1f5f9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-icon-btn:hover {
+  background: #FFD700;
+  color: #04070d;
+  border-color: #FFD700;
+  transform: translateY(-3px);
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.5);
+}
+
+/* ==========================================================================
+   3. INDUSTRY AWARDS & RECOGNITION BADGES
+   (Floating animation with white/frosted background cards)
+   ========================================================================== */
+
+.footer-badges-showcase-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.badges-header-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 18px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 999px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #FFD700;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+}
+
+.badge-shield-icon {
+  color: #FFD700;
+}
+
+.footer-badges-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* Static Badges - No floating animation, transparent background (only the logo), glowing on hover */
+.footer-badge-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent; /* Removed white background, only the logo */
+  border: none;
+  border-radius: 12px;
+  padding: 10px 14px;
+  min-height: 80px;
+  box-shadow: none;
+  cursor: pointer;
+  overflow: visible;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 0.35s ease;
+}
+
+/* Radiant Gold Glow ONLY on Hover */
+.footer-badge-card:hover {
+  transform: translateY(-4px) scale(1.04);
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.7)) drop-shadow(0 0 8px rgba(255, 215, 0, 0.9));
+}
+
+.badge-glow-ambient {
+  display: none;
+}
+
+.badge-image-graphic {
+  max-width: 100%;
+  max-height: 68px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.footer-badge-card:hover .badge-image-graphic {
+  transform: scale(1.05);
+}
+
+/* ==========================================================================
+   4. LEGAL POLICIES & HELP ASSISTANCE BAR
+   ========================================================================== */
+
+.footer-bottom-legal-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 22px 0;
+  border-top: 1px solid rgba(255, 215, 0, 0.15);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+  margin-bottom: 24px;
+}
+
+.footer-legal-links-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.legal-anchor {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.legal-anchor:hover {
+  color: #FFD700;
+}
+
+.legal-dot {
+  color: rgba(255, 215, 0, 0.4);
+  font-size: 0.75rem;
+}
+
+.feedback-anchor {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #FFD700;
+  font-weight: 700;
+  padding: 4px 12px;
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 999px;
+  transition: all 0.25s ease;
+}
+
+.feedback-anchor:hover {
+  background: #FFD700;
+  color: #04070d;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.45);
+}
+
+/* Direct Support / Purchase Callout */
+.footer-help-callout {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+}
+
+.help-prefix {
+  color: #94a3b8;
+}
+
+.help-call-text {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.help-phone-link {
+  color: #FFD700;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.help-phone-link:hover {
+  color: #FFE033;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+}
+
+/* ==========================================================================
+   5. FINAL COPYRIGHT STATEMENT
+   ========================================================================== */
+
+.footer-final-copyright-row {
+  text-align: center;
+}
+
+.copyright-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.gold-author-link {
+  color: #FFD700;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* Tablet & Medium Screens */
+@media (max-width: 1100px) {
+  .footer-top-hero-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 1.8rem;
+    padding: 28px 24px;
+  }
+
+  .footer-brand-logo-wrap {
+    margin: 0 auto;
+  }
+
+  .footer-hero-center-content {
+    align-items: center;
+  }
+
+  .footer-newsletter-wrap {
+    max-width: 440px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .footer-columns-matrix {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
+  }
+
+  .footer-badges-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .footer-bottom-legal-bar {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 640px) {
+  .footer-master-root {
+    padding: 60px 1.25rem 30px;
+  }
+
+  .footer-columns-matrix {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-badges-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .footer-newsletter-form {
+    flex-direction: column;
+    border-radius: 16px;
+    padding: 10px 14px;
+    gap: 8px;
+  }
+
+  .footer-newsletter-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer-legal-links-row {
+    justify-content: center;
+    gap: 10px;
+  }
+}
+

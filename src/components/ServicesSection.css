@@ -76,51 +76,48 @@
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.18em;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #fbbf24;
-  background: rgba(251, 191, 36, 0.08);
-  border: 1px solid rgba(251, 191, 36, 0.32);
-  padding: 0.4rem 1.15rem;
+  color: #D6B36A;
+  background: rgba(214, 179, 106, 0.08);
+  border: 1px solid rgba(214, 179, 106, 0.3);
+  padding: 0.3rem 1rem;
   border-radius: 9999px;
-  box-shadow: 0 0 20px rgba(251, 191, 36, 0.15);
 }
 
 .eyebrow-gold-sparkle {
-  color: #fde047;
+  color: #D6B36A;
 }
 
 .services-main-title {
-  font-family: 'Syne', 'Cinzel', 'Plus Jakarta Sans', serif;
-  font-size: clamp(1.8rem, 2.6vw, 2.4rem);
-  font-weight: 850;
-  line-height: 1.18;
-  letter-spacing: -0.025em;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.85rem, 2.5vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   margin: 0;
-  color: #ffffff;
+  color: #F5F3ED;
 }
 
 .title-lead {
-  color: #ffffff;
+  color: #F5F3ED;
 }
 
 .title-gold-gradient {
-  background: linear-gradient(135deg, #ffffff 0%, #fef08a 25%, #fbbf24 60%, #f59e0b 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #D6B36A;
+  font-weight: 700;
   display: inline-block;
-  filter: drop-shadow(0 0 25px rgba(251, 191, 36, 0.35));
 }
 
 .services-subheading {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.08rem;
-  line-height: 1.68;
-  color: #cbd5e1;
+  font-family: 'Inter', sans-serif;
+  font-size: 1.02rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #A3B0A8;
   max-width: 680px;
   margin: 0;
 }
@@ -188,17 +185,17 @@
 }
 
 .btn-tab-num {
-  font-family: 'Syne', monospace;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 0.75rem;
-  font-weight: 800;
-  color: #fbbf24;
+  font-weight: 700;
+  color: #D6B36A;
 }
 
 .btn-tab-title {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.84rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #F5F3ED;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -327,9 +324,9 @@
 }
 
 .badge-number-text {
-  font-family: 'Syne', monospace;
-  font-size: 1.15rem;
-  font-weight: 800;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.01em;
 }
@@ -369,71 +366,68 @@
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.74rem;
-  font-weight: 700;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  padding: 0.35rem 0.95rem;
+  padding: 0.28rem 0.85rem;
   border-radius: 9999px;
-  border: 1px solid rgba(251, 191, 36, 0.35);
-  background: rgba(251, 191, 36, 0.06);
-  color: #fbbf24;
+  border: 1px solid rgba(214, 179, 106, 0.3);
+  background: rgba(214, 179, 106, 0.08);
+  color: #D6B36A;
   width: fit-content;
-  box-shadow: 0 0 15px rgba(251, 191, 36, 0.08);
 }
 
 .tag-pill-icon {
-  color: #fde047;
+  color: #D6B36A;
 }
 
 .tracking-animated {
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   transition: letter-spacing 0.3s ease;
 }
 
 .service-tag-pill:hover .tracking-animated {
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
 }
 
-/* Stylish Main Headline with Cinzel & Syne Serif Polish */
+/* Stylish Main Headline with Clean Space Grotesk */
 .service-headline {
-  font-family: 'Cinzel', 'Syne', Georgia, serif;
-  font-size: clamp(2rem, 2.7vw, 2.65rem);
-  font-weight: 800;
-  line-height: 1.2;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.8rem, 2.4vw, 2.3rem);
+  font-weight: 700;
+  line-height: 1.22;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: #F5F3ED;
   margin: 0;
 }
 
 .service-order-number {
-  color: #fbbf24;
+  color: #D6B36A;
   margin-right: 0.3rem;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
 }
 
 .service-title-text {
-  background: linear-gradient(135deg, #ffffff 40%, #f1f5f9 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #F5F3ED;
 }
 
 .service-tagline {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.6;
-  color: #fbbf24;
-  font-weight: 650;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: #D6B36A;
+  font-weight: 600;
   margin: 0;
 }
 
 .service-description {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 1.02rem;
-  line-height: 1.72;
-  color: #94a3b8;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  color: #A3B0A8;
   margin: 0;
   max-width: 580px;
 }
@@ -452,13 +446,14 @@
   display: flex;
   align-items: center;
   gap: 0.65rem;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.94rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
   color: #e2e8f0;
 }
 
 .check-gold-icon {
-  color: #fbbf24;
+  color: #D6B36A;
   flex-shrink: 0;
 }
 
@@ -475,28 +470,23 @@
   display: inline-flex;
   align-items: center;
   gap: 0.65rem;
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
-  color: #04060C !important;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  padding: 0.9rem 2.2rem;
+  background: #D6B36A;
+  color: #080B0A !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 0.78rem 1.8rem;
   border-radius: 9999px;
   text-decoration: none;
-  box-shadow: 
-    0 10px 25px rgba(245, 158, 11, 0.35),
-    0 0 20px rgba(251, 191, 36, 0.2);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid #fef08a;
+  transition: all 0.25s ease;
+  border: none;
 }
 
 .service-gold-cta-btn:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 
-    0 15px 35px rgba(245, 158, 11, 0.55),
-    0 0 30px rgba(251, 191, 36, 0.45);
-  background: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #f59e0b 100%);
+  background: #e0bf77;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 18px rgba(214, 179, 106, 0.3);
 }
 
 .btn-arrow {
@@ -508,9 +498,9 @@
 }
 
 .service-sla-label {
-  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 0.82rem;
-  font-weight: 600;
+  font-weight: 500;
   color: #64748b;
 }
 
@@ -523,7 +513,7 @@
   justify-content: space-between;
   padding: 1.15rem 2rem;
   background: rgba(10, 14, 24, 0.7);
-  border: 1px solid rgba(251, 191, 36, 0.22);
+  border: 1px solid rgba(214, 179, 106, 0.2);
   border-radius: 18px;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
@@ -534,23 +524,22 @@
   align-items: center;
   gap: 0.5rem;
   background: rgba(4, 6, 12, 0.85);
-  border: 1px solid rgba(251, 191, 36, 0.35);
+  border: 1px solid rgba(214, 179, 106, 0.3);
   border-radius: 9999px;
-  padding: 0.55rem 1.4rem;
-  color: #fbbf24;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 0.84rem;
-  font-weight: 750;
+  padding: 0.5rem 1.3rem;
+  color: #D6B36A;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.25s ease;
 }
 
 .nav-arrow-btn:hover {
-  background: #fbbf24;
-  color: #04060C;
-  border-color: #fde047;
+  background: #D6B36A;
+  color: #080B0A;
+  border-color: #D6B36A;
   transform: translateY(-2px);
-  box-shadow: 0 0 20px rgba(251, 191, 36, 0.4);
 }
 
 .nav-center-tracker {
@@ -560,10 +549,10 @@
 }
 
 .tracker-counter {
-  font-family: 'Syne', monospace;
-  font-size: 0.92rem;
-  font-weight: 800;
-  color: #fbbf24;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #D6B36A;
   display: flex;
   align-items: center;
   gap: 0.25rem;

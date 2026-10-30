@@ -1,0 +1,663 @@
+/* ==========================================================================
+   VIDEO TESTIMONIAL SECTION (Single View Fit with TV Frame)
+   - Layout: Left Column (Title arrived from left), Right Column (TV Display)
+   - Palette: Pure Rich Black (#030407) & Pure Bright Gold (#FFD700 / #D4AF37)
+   - Fit: Sized to fit comfortably in a single screen view (100vh / max-height bound)
+   ========================================================================== */
+
+.video-testimonial-section {
+  position: relative;
+  background-color: #030407; /* Pure bright rich black */
+  color: #FFFFFF;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 85px 2rem 80px;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-top: 1px solid rgba(255, 215, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+/* Atmospheric Ambient Glows */
+.vt-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(140px);
+  z-index: 0;
+}
+
+.vt-ambient-glow.glow-left {
+  top: 20%;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%);
+}
+
+.vt-ambient-glow.glow-right {
+  bottom: 10%;
+  right: -80px;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.09) 0%, transparent 70%);
+}
+
+.vt-grid-mesh {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(255, 215, 0, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 215, 0, 0.02) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+.vt-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* 2-Column Responsive Layout */
+.vt-dual-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+/* ==========================================================================
+   LEFT COLUMN: Narrative & Title Content
+   ========================================================================== */
+.vt-left-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vt-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  color: #FFD700;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.15);
+}
+
+.vt-sparkle-icon {
+  color: #FFE57F;
+}
+
+.vt-main-title {
+  font-family: 'Playfair Display', 'Space Grotesk', serif;
+  font-size: clamp(1.85rem, 2.6vw, 2.65rem);
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: #FFFFFF;
+  margin: 0 0 1rem;
+}
+
+.vt-gold-highlight {
+  color: #FFD700;
+  text-shadow: 0 0 24px rgba(255, 215, 0, 0.35);
+}
+
+.vt-gold-gradient {
+  background: linear-gradient(135deg, #FFF2A8 0%, #FFD700 50%, #D4AF37 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vt-gold-divider {
+  position: relative;
+  width: 90px;
+  height: 2px;
+  background: linear-gradient(90deg, #FFD700, transparent);
+  margin-bottom: 1.2rem;
+}
+
+.vt-divider-sparkle {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%) rotate(45deg);
+  width: 5px;
+  height: 5px;
+  background: #FFD700;
+  box-shadow: 0 0 8px #FFD700;
+}
+
+.vt-lead-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.96rem;
+  line-height: 1.62;
+  color: #D1D5DB;
+  margin: 0 0 1.4rem;
+}
+
+.vt-lead-text strong {
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+/* Benefits Checklist */
+.vt-benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.vt-benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: #E5E7EB;
+}
+
+.vt-check-circle {
+  color: #FFD700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Client Citation Card */
+.vt-client-badge-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 215, 0, 0.22);
+  border-radius: 14px;
+  margin-bottom: 1.4rem;
+  width: 100%;
+  max-width: 480px;
+}
+
+.vt-client-avatar {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid #FFD700;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.vt-client-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+}
+
+.vt-client-info {
+  flex: 1;
+}
+
+.vt-client-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 2px;
+}
+
+.vt-client-role {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  color: #A3A3A3;
+  margin: 0;
+}
+
+.vt-client-verified {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #FFD700;
+  background: rgba(255, 215, 0, 0.09);
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  flex-shrink: 0;
+}
+
+.vt-verified-icon {
+  color: #FFD700;
+}
+
+/* Action button */
+.vt-actions-row {
+  display: flex;
+  align-items: center;
+}
+
+.vt-external-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 20px;
+  border-radius: 999px;
+  background: transparent;
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #FFD700;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.vt-external-btn:hover {
+  background: #FFD700;
+  color: #000000;
+  box-shadow: 0 0 18px rgba(255, 215, 0, 0.5);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   RIGHT COLUMN: TELEVISION DISPLAY FRAME (Realistic TV Enclosure)
+   ========================================================================== */
+.vt-right-tv-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.vt-tv-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TV Top Bezel Strip */
+.vt-tv-top-bezel {
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 16px;
+  background: linear-gradient(180deg, #1f232b 0%, #111317 100%);
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border: 1px solid rgba(255, 215, 0, 0.35);
+  border-bottom: none;
+}
+
+.vt-tv-brand-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #FFD700;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+}
+
+.vt-tv-icon {
+  color: #FFD700;
+}
+
+.vt-tv-status-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tv-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.tv-green {
+  background: #10B981;
+  box-shadow: 0 0 6px #10B981;
+}
+
+.tv-gold {
+  background: #FFD700;
+  box-shadow: 0 0 6px #FFD700;
+}
+
+.tv-red {
+  background: #EF4444;
+}
+
+/* TV Main Chassis */
+.vt-tv-screen-chassis {
+  position: relative;
+  width: 100%;
+  background: #0d0f14;
+  border: 3px solid #1c202a;
+  outline: 1.5px solid rgba(255, 215, 0, 0.45);
+  border-radius: 18px;
+  padding: 12px;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.9),
+    0 0 45px rgba(255, 215, 0, 0.12),
+    inset 0 0 20px rgba(0, 0, 0, 0.9);
+  box-sizing: border-box;
+}
+
+/* Inner Screen Glass Container (16:9 ratio) */
+.vt-tv-screen-glass {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 35px rgba(0, 0, 0, 0.85);
+}
+
+/* TV Vignette & Glare */
+.vt-tv-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 65%, rgba(0, 0, 0, 0.6) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.vt-tv-scanlines {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  pointer-events: none;
+  opacity: 0.28;
+  z-index: 3;
+}
+
+/* Video Poster State */
+.vt-tv-poster {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.vt-poster-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s ease;
+}
+
+.vt-tv-poster:hover .vt-poster-img {
+  transform: scale(1.04);
+  filter: brightness(1.08);
+}
+
+.vt-poster-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.65) 100%);
+  z-index: 4;
+}
+
+/* TV Play Button */
+.vt-tv-play-btn {
+  position: relative;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFF2A8 0%, #FFD700 60%, #B89224 100%);
+  border: 2px solid #FFFFFF;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 
+    0 0 35px rgba(255, 215, 0, 0.75),
+    0 12px 28px rgba(0, 0, 0, 0.8);
+  outline: none;
+  transition: box-shadow 0.3s ease;
+}
+
+.vt-tv-play-btn:hover {
+  box-shadow: 
+    0 0 50px rgba(255, 215, 0, 0.95),
+    0 15px 35px rgba(0, 0, 0, 0.9);
+}
+
+.vt-play-icon {
+  margin-left: 4px;
+  fill: #000000;
+}
+
+.vt-play-pulse {
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255, 215, 0, 0.6);
+  animation: tvPlayPulse 2.2s infinite ease-out;
+  pointer-events: none;
+}
+
+@keyframes tvPlayPulse {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.45); opacity: 0; }
+}
+
+.vt-poster-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  color: #FFD700;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(8px);
+}
+
+.vt-sound-icon {
+  color: #FFD700;
+}
+
+/* Video Iframe View */
+.vt-iframe-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.vt-tv-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+}
+
+/* TV Bottom Bezel Strip (Speaker Mesh + Power LED) */
+.vt-tv-bottom-bezel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px 2px;
+}
+
+.vt-tv-speaker-mesh {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.vt-tv-speaker-mesh span {
+  width: 3px;
+  height: 3px;
+  background: #2a303c;
+  border-radius: 50%;
+}
+
+.vt-tv-power-led {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vt-led-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #374151;
+}
+
+.vt-led-dot.active {
+  background: #FFD700;
+  box-shadow: 0 0 10px #FFD700, 0 0 18px rgba(255, 215, 0, 0.8);
+}
+
+.vt-led-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #9CA3AF;
+  letter-spacing: 0.14em;
+}
+
+/* TV Pedestal Stand Assembly */
+.vt-tv-stand-assembly {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.vt-tv-stem {
+  width: 90px;
+  height: 28px;
+  background: linear-gradient(180deg, #1f242d 0%, #0d0f14 100%);
+  border-left: 1px solid rgba(255, 215, 0, 0.4);
+  border-right: 1px solid rgba(255, 215, 0, 0.4);
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+}
+
+.vt-tv-base {
+  position: relative;
+  width: 250px;
+  height: 10px;
+  background: linear-gradient(90deg, #111317 0%, #2a313d 50%, #111317 100%);
+  border-radius: 6px;
+  border: 1px solid rgba(255, 215, 0, 0.45);
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.95),
+    0 0 16px rgba(255, 215, 0, 0.25);
+}
+
+.vt-base-reflection {
+  position: absolute;
+  top: 1px;
+  left: 20%;
+  right: 20%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #FFD700, transparent);
+}
+
+/* Ambient Desk/Floor Glow */
+.vt-tv-underglow {
+  position: absolute;
+  bottom: -15px;
+  width: 75%;
+  height: 35px;
+  background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.25) 0%, transparent 75%);
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (Laptops, Tablets & Mobile)
+   ========================================================================== */
+@media (max-width: 1100px) {
+  .video-testimonial-section {
+    min-height: auto;
+    padding: 80px 1.5rem 80px;
+  }
+
+  .vt-dual-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .vt-left-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .vt-gold-divider {
+    margin: 0 auto 1.2rem;
+  }
+
+  .vt-benefits-list {
+    align-items: center;
+  }
+
+  .vt-client-badge-card {
+    margin: 0 auto 1.4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .vt-main-title {
+    font-size: 1.65rem;
+  }
+
+  .vt-tv-play-btn {
+    width: 60px;
+    height: 60px;
+  }
+
+  .vt-tv-base {
+    width: 190px;
+  }
+}
+

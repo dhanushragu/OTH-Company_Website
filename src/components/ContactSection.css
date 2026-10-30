@@ -1,0 +1,689 @@
+/* ==========================================================================
+   OFFICE HUB TECH - "GET IN TOUCH WITH US" CONTACT SECTION
+   - Concept: Single Master Frame enclosing both Image and Form seamlessly
+   - Form Style: Clean, NO separate box background, uses the full width
+   - Palette: Obsidian Black (#080B0A), Rich Bright Gold (#fbbf24 / #D4AF37)
+   - Typography: Space Grotesk (Headings), Inter (Fields, Labels, Body)
+   ========================================================================== */
+
+.contact-section {
+  position: relative;
+  background-color: #080B0A;
+  color: #F5F3ED;
+  padding: 110px 2rem 130px;
+  overflow: hidden;
+  border-top: 1px solid rgba(251, 191, 36, 0.18);
+  box-sizing: border-box;
+}
+
+/* Atmospheric Background Lighting */
+.contact-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(160px);
+}
+
+.contact-ambient-glow.glow-top-left {
+  top: 10%;
+  left: 5%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.06) 0%, transparent 70%);
+}
+
+.contact-ambient-glow.glow-bottom-right {
+  bottom: 8%;
+  right: 5%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.04) 0%, transparent 70%);
+}
+
+.contact-grid-pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(rgba(251, 191, 36, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251, 191, 36, 0.015) 1px, transparent 1px);
+  background-size: 64px 64px;
+  opacity: 0.45;
+}
+
+.contact-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   1. SECTION HEADER
+   ========================================================================== */
+.contact-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 3.8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.contact-eyebrow-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.28rem 0.95rem;
+  border-radius: 9999px;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.35);
+  color: #fbbf24;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow: 0 0 16px rgba(251, 191, 36, 0.12);
+}
+
+.eyebrow-gold-sparkle {
+  color: #fde047;
+}
+
+.contact-main-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.1rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.title-gold-gradient {
+  color: #fbbf24;
+  display: inline-block;
+  font-weight: 700;
+}
+
+.contact-gold-divider {
+  position: relative;
+  width: 90px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, #fbbf24, transparent);
+  margin: 0.2rem auto 0;
+}
+
+.divider-sparkle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 5px;
+  height: 5px;
+  background: #fbbf24;
+  box-shadow: 0 0 8px #fbbf24;
+}
+
+.contact-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(0.95rem, 1.05vw, 1.05rem);
+  line-height: 1.6;
+  color: #A3B0A8;
+  margin: 0;
+  max-width: 660px;
+}
+
+/* ==========================================================================
+   2. SINGLE UNIFIED MASTER FRAME (IMAGE + FORM IN ONE BOUNDARY)
+   - Background: Frosted Glassmorphism across the master frame
+   - Form itself has NO nested box background!
+   ========================================================================== */
+.contact-unified-master-frame {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(360px, 460px) 1.65fr;
+  gap: 3.5rem;
+  align-items: stretch;
+  background: rgba(14, 20, 24, 0.6);
+  border: 1px solid rgba(251, 191, 36, 0.32); /* Rich Bright Gold Master Border */
+  border-radius: 28px;
+  padding: 2.2rem 2.8rem 2.2rem 2.2rem;
+  box-sizing: border-box;
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  box-shadow: 
+    0 30px 75px rgba(0, 0, 0, 0.92),
+    0 0 40px rgba(251, 191, 36, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+}
+
+.master-frame-halo {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(251, 191, 36, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  filter: blur(60px);
+}
+
+/* ==========================================================================
+   LEFT PANE: EMBEDDED IMAGE
+   ========================================================================== */
+.unified-image-pane {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 540px;
+}
+
+.unified-image-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #0c1014;
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+}
+
+.unified-showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.unified-image-container:hover .unified-showcase-img {
+  transform: scale(1.035);
+}
+
+.unified-img-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(8, 11, 10, 0.1) 0%,
+    rgba(8, 11, 10, 0.05) 40%,
+    rgba(8, 11, 10, 0.72) 80%,
+    rgba(8, 11, 10, 0.95) 100%
+  );
+  pointer-events: none;
+}
+
+.unified-floating-pill {
+  position: absolute;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.38rem 0.9rem;
+  border-radius: 9999px;
+  background: rgba(8, 12, 14, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.75);
+  font-family: 'Inter', sans-serif;
+  font-size: 0.73rem;
+  font-weight: 600;
+  color: #F5F3ED;
+  transition: all 0.3s ease;
+}
+
+.unified-floating-pill:hover {
+  background: rgba(14, 20, 24, 0.95);
+  border-color: #fbbf24;
+  transform: translateY(-2px);
+}
+
+.unified-floating-pill.pill-top {
+  top: 20px;
+  left: 20px;
+}
+
+.unified-floating-pill.pill-bottom {
+  top: 68px;
+  left: 20px;
+}
+
+.pill-gold-icon {
+  color: #fbbf24;
+  flex-shrink: 0;
+}
+
+.pill-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10B981;
+  box-shadow: 0 0 8px #10B981;
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.4); opacity: 1; }
+}
+
+.unified-image-caption {
+  position: absolute;
+  bottom: 22px;
+  left: 22px;
+  right: 22px;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.caption-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #fbbf24;
+}
+
+.caption-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+/* ==========================================================================
+   RIGHT PANE: PURE FORM (NO SEPARATE BOX BACKGROUND)
+   Uses the full wide layout of the master frame
+   ========================================================================== */
+.unified-form-pane {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.35rem;
+  width: 100%;
+  background: transparent !important; /* NO background for the form */
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0.4rem 0;
+}
+
+/* Form Top Bar */
+.form-card-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(251, 191, 36, 0.18);
+  padding-bottom: 1rem;
+}
+
+.form-heading-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.form-card-badge {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #fbbf24;
+  text-transform: uppercase;
+}
+
+.form-card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: -0.015em;
+}
+
+.form-step-indicator {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.1);
+  padding: 0.25rem 0.8rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(251, 191, 36, 0.35);
+}
+
+/* Form Actual Elements */
+.contact-actual-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.form-dual-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.35rem;
+}
+
+.form-field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.38rem;
+}
+
+.field-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #E2E8F0;
+  letter-spacing: 0.02em;
+}
+
+.required-star {
+  color: #fbbf24;
+}
+
+/* Clean Input Fields */
+.field-input,
+.field-textarea {
+  width: 100%;
+  background: rgba(8, 12, 16, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 0.78rem 1.1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.92rem;
+  color: #FFFFFF;
+  box-sizing: border-box;
+  outline: none;
+  transition: all 0.25s ease;
+}
+
+.field-input::placeholder,
+.field-textarea::placeholder {
+  color: #64748B;
+  font-size: 0.85rem;
+}
+
+.field-input:focus,
+.field-textarea:focus {
+  border-color: #fbbf24;
+  background: rgba(12, 18, 24, 0.92);
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.25);
+}
+
+.field-textarea {
+  resize: vertical;
+  min-height: 85px;
+}
+
+/* ==========================================================================
+   SMS CONSENT BOX (Wide format, exactly 2 rows)
+   ========================================================================== */
+.form-consent-box {
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(251, 191, 36, 0.2);
+  border-radius: 12px;
+  padding: 0.85rem 1.25rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.consent-checkbox-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.consent-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.consent-checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border-radius: 5px;
+  border: 1.5px solid #fbbf24;
+  background: rgba(10, 15, 20, 0.95);
+  flex-shrink: 0;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.consent-checkbox:checked + .consent-checkbox-custom {
+  background: #fbbf24;
+  border-color: #fbbf24;
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.6);
+}
+
+.consent-checkbox:checked + .consent-checkbox-custom::after {
+  content: '';
+  width: 4.5px;
+  height: 9px;
+  border: solid #04060C;
+  border-width: 0 2.2px 2.2px 0;
+  transform: rotate(45deg);
+  margin-bottom: 2px;
+}
+
+.consent-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.74rem;
+  line-height: 1.55;
+  color: #CBD5E1;
+}
+
+.consent-link {
+  color: #fbbf24;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: all 0.2s ease;
+}
+
+.consent-link:hover {
+  color: #fef08a;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.6);
+}
+
+/* Action Row */
+.form-action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.submit-message-gold-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: linear-gradient(135deg, #fde047 0%, #fbbf24 50%, #f59e0b 100%);
+  color: #04060C !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.94rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  padding: 0.85rem 2.4rem;
+  border-radius: 9999px;
+  border: 1px solid #fef08a;
+  cursor: pointer;
+  box-shadow: 
+    0 12px 30px rgba(245, 158, 11, 0.4),
+    0 0 20px rgba(251, 191, 36, 0.25);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.submit-message-gold-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #fef08a 0%, #fbbf24 50%, #d97706 100%);
+  box-shadow: 
+    0 16px 40px rgba(245, 158, 11, 0.6),
+    0 0 30px rgba(251, 191, 36, 0.45);
+}
+
+.submit-message-gold-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-send-icon {
+  transition: transform 0.25s ease;
+}
+
+.submit-message-gold-btn:hover:not(:disabled) .btn-send-icon {
+  transform: translate(2px, -2px);
+}
+
+.form-security-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.76rem;
+  color: #94A3B8;
+}
+
+.sec-icon {
+  color: #fbbf24;
+}
+
+/* Success State Screen */
+.form-success-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3.5rem 1.5rem;
+  gap: 1.1rem;
+}
+
+.success-icon-wrap {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1.5px solid #10B981;
+  color: #10B981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+}
+
+.success-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+}
+
+.success-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: #A3B0A8;
+  max-width: 480px;
+  margin: 0;
+}
+
+.highlight-name {
+  color: #fbbf24;
+  font-weight: 600;
+}
+
+.send-another-btn {
+  margin-top: 1rem;
+  padding: 0.65rem 1.6rem;
+  border-radius: 9999px;
+  background: transparent;
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  color: #fbbf24;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.send-another-btn:hover {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: #fbbf24;
+  color: #fef08a;
+}
+
+/* ==========================================================================
+   6. RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .contact-unified-master-frame {
+    grid-template-columns: 1fr;
+    gap: 2.8rem;
+    padding: 2rem 1.8rem;
+  }
+
+  .unified-image-pane {
+    min-height: 420px;
+    max-height: 460px;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-section {
+    padding: 70px 1.25rem 80px;
+  }
+
+  .contact-unified-master-frame {
+    padding: 1.5rem 1.2rem;
+    border-radius: 20px;
+  }
+
+  .form-dual-row {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+  }
+
+  .unified-image-pane {
+    min-height: 300px;
+  }
+
+  .submit-message-gold-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

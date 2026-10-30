@@ -11,7 +11,8 @@ const consultationCards = [
     title: 'Zoho Consulting',
     description: "OfficeHub Tech's Zoho expansion service optimizes CRM use for growth and efficiency.",
     link: 'https://officehubtech.com/consultation/zoho-consulting/',
-    image: '/consultation%20services/Zoho%20Consulting.png',
+    initialImage: '/consultation services/Zoho Consulting.png',
+    turnedImage: '/consultation services/front img/zoho consulting img.jpg',
     // Stack offsets relative to deck center
     stackX: -18,
     stackY: 8,
@@ -25,7 +26,8 @@ const consultationCards = [
     title: 'Support Plans',
     description: 'Custom Zoho support plans for your business, ensuring smooth CRM operations and growth.',
     link: 'https://officehubtech.com/consultation/support-plans/',
-    image: '/consultation%20services/Support%20Plans.png',
+    initialImage: '/consultation services/Support Plans.png',
+    turnedImage: '/consultation services/front img/support plan img.jpg',
     stackX: -6,
     stackY: 4,
     stackRotate: -3.5,
@@ -38,7 +40,8 @@ const consultationCards = [
     title: 'Zoho Solution Training',
     description: 'Empower your team with Zoho CRM training for success and enhanced tool usage.',
     link: 'https://officehubtech.com/consultation/zoho-solution-training/',
-    image: '/consultation%20services/Zoho%20solution%20Training.png',
+    initialImage: '/consultation services/Zoho solution Training.png',
+    turnedImage: '/consultation services/front img/zoho training solution img.jpg',
     stackX: 6,
     stackY: -4,
     stackRotate: 4,
@@ -51,7 +54,8 @@ const consultationCards = [
     title: 'Sales Automation deployment',
     description: 'OfficeHub Tech specializes in Zoho CRM sales automation, ensuring optimal use and ROI.',
     link: 'https://officehubtech.com/consultation/sales-automation-deployment/',
-    image: '/consultation%20services/Sales%20Automation.png',
+    initialImage: '/consultation services/Sales Automation.png',
+    turnedImage: '/consultation services/front img/salse automation img.jpg',
     stackX: 18,
     stackY: -8,
     stackRotate: 1.5,
@@ -269,7 +273,7 @@ export default function ConsultationSection() {
                         <div className="card-outer-gold-border" />
                         <div className="image-wrapper">
                           <img
-                            src={card.image}
+                            src={card.initialImage}
                             alt={`${card.title} Consultation Visual`}
                             className="card-front-img"
                             loading="lazy"
@@ -281,7 +285,7 @@ export default function ConsultationSection() {
                         <span className="card-corner-pip bottom-right image-pip">{card.number}</span>
                       </div>
 
-                      {/* BACK FACE: TEXT & CONSULTATION DETAILS (Revealed after flip) */}
+                      {/* BACK FACE: SPLIT TOP IMAGE + BOTTOM CONTENT (Revealed after flip) */}
                       <div className="card-face card-face-back">
                         <a
                           href={card.link}
@@ -294,39 +298,35 @@ export default function ConsultationSection() {
                           {/* Metallic Champagne-Gold Outer Border */}
                           <div className="card-outer-gold-border" />
 
-                          {/* Secondary Inner Border with Engraved Corner Detailing */}
-                          <div className="card-inner-ornate-border">
-                            {/* 4 Corner Pips / Suits */}
-                            <span className="card-corner-pip top-left">{card.suit}</span>
-                            <span className="card-corner-pip top-right">{card.number}</span>
-                            <span className="card-corner-pip bottom-left">{card.number}</span>
-                            <span className="card-corner-pip bottom-right">{card.suit}</span>
-
-                            {/* Top Index Badge */}
-                            <div className="card-head-row">
-                              <span className="card-index-pill">{card.number} / CONSULTATION</span>
-                              <span className="card-suit-icon">{card.suit}</span>
+                          {/* Secondary Inner Border */}
+                          <div className="card-inner-split-container">
+                            {/* TOP HALF: Consultation Image (from front img) */}
+                            <div className="card-back-image-half">
+                              <img
+                                src={card.turnedImage}
+                                alt={card.title}
+                                className="card-back-half-img"
+                                loading="lazy"
+                              />
+                              <div className="card-back-img-scrim" />
+                              <div className="card-back-pill">
+                                <span className="card-index-pill">{card.number} / CONSULTATION</span>
+                              </div>
                             </div>
 
-                            {/* Center Ornamental Geometry */}
-                            <div className="card-center-geometry" aria-hidden="true">
-                              <div className="geometry-diamond" />
-                              <div className="geometry-circle" />
-                              <div className="geometry-axis horizontal" />
-                              <div className="geometry-axis vertical" />
-                            </div>
+                            {/* BOTTOM HALF: Text Content & Actions */}
+                            <div className="card-back-content-half">
+                              <div className="card-content-body">
+                                <h3 className="card-service-title">{card.title}</h3>
+                                <p className="card-service-desc">{card.description}</p>
+                              </div>
 
-                            {/* Card Core Content */}
-                            <div className="card-content-body">
-                              <h3 className="card-service-title">{card.title}</h3>
-                              <p className="card-service-desc">{card.description}</p>
-                            </div>
-
-                            {/* Card Footer: Minimal Arrow Link */}
-                            <div className="card-footer-cue">
-                              <span className="cue-label">Explore Consultation</span>
-                              <div className="cue-arrow-badge">
-                                <ArrowUpRight size={15} className="cue-arrow" />
+                              {/* Card Footer: Minimal Arrow Link */}
+                              <div className="card-footer-cue">
+                                <span className="cue-label">Explore Consultation</span>
+                                <div className="cue-arrow-badge">
+                                  <ArrowUpRight size={14} className="cue-arrow" />
+                                </div>
                               </div>
                             </div>
 
